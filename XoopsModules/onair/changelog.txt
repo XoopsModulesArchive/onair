@@ -1,0 +1,48 @@
+﻿VERSION 1.0
+------------
+06 June 2009.: Released the module for testing on (Xoops Forums module reviews)
+
+VERSION 1.01
+------------
+07 june 2009
+
+- Reprefixed my functions // Thanks to Trabis
+- Added intval(), addslashes() to some functions not using them // Thanks again to Trabis
+- fixed function playlistall to show all playlists
+- Fixed warnings in playlists.php
+- fixed admin/index.php so events are sorted day,start not only by day 
+
+VERSION 1.02
+------------
+13 june 2009
+
+- Changed the save and add new event functions. If start > stop time then automaticly these
+	are changed to '23:59:59'
+- Changed the function in script to show current event running and if this is last before
+	midnight then choose first after midnight for the "Comming up" container.
+	
+Version 1.03
+------------
+26 june 2009
+
+- Adjusted the template to show day name in every query
+- Make function to show different background where event is onair now.
+
+Version 1.04
+------------
+27 july 2009
+
+- Deleted the dhtml- scroller from templates/blocks/onair_block.html
+- Deleted the one <div> from templates/blocks/onair_block.html
+- Added Jquery 1.3.2 to /include/jquery and added to templates/blocks/onair_block.html
+- Added jquery to replace content of the remaining div with data from 2 seperate php files using the blocks/simple_now block
+- Added 2 php files using the block function to place static block content into the jquery // inspired by Hervé's example
+- Added 2 templates to xoops_version these are used by the 2 php files being called by jquery to fill the div in /blocks/onair_block.html
+- Added check language i simple_now.php. These are nessesary for translating the data got from the 2 php files.
+- Added a check to b_onair_block for looking for next event next day in case there are no more the specific day.
+
+29 July 2009
+------------
+
+- Corrected an error in block template where the container div was not closed
+- Added in languagefiles main 2 additions that was left out
