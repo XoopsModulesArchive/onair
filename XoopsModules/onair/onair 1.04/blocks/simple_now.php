@@ -1,5 +1,5 @@
 <?php
-/***
+/**
  * Onair Module
  *
  * Use this to show details, picture and schedule of timed events in a block. 
@@ -132,7 +132,7 @@ function b_Onair_Show() {
 	$messagenext['comup'] = _MB_ONAIR_COMINGUP;
 	$block['onair2'][] = $messagenext; 
 	}
-	
+	}
 		if ( $resultnext ){ 
 
 	while($myrownext=$xoopsDB->fetchArray($resultnext))
