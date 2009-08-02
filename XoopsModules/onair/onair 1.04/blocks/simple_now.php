@@ -1,5 +1,5 @@
 <?php
-/**
+/***
  * Onair Module
  *
  * Use this to show details, picture and schedule of timed events in a block. 
