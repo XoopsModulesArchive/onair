@@ -65,6 +65,7 @@ function Choice() {
         echo "<td class='even'><center><a href='index.php?op=Eventshow'>"._AM_ONAIR_EDIT."</a></center></td>";
 		echo "<td class='even'><center><a href='playlist.php?op=Playlistshow'>"._AM_ONAIR_SHOWPLAYLISTS."</a></center></td>";
 		echo "<td class='even'><center><a href='../help.php'"._AM_ONAIR_HELP."</a></center></td>";
+		echo "<td class='even'><center><a href='songs.php"._AM_ONAIR_SONGSADMIN."</a></center></td>";
 		echo "<td class='even'><center><a href='../../system/admin.php?fct=preferences&amp;op=showmod&amp;mod="
 		.$xoopsModule ->getVar('mid')."'>"._AM_ONAIR_CONFIG."</a></center></td>";
         echo '</tr></table>';
