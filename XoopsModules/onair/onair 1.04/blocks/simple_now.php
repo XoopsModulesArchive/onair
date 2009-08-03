@@ -13,8 +13,8 @@
  * @copyright   The XOOPS Project http://sourceforge.net/projects/xoops/
  * @license       http://www.fsf.org/copyleft/gpl.html GNU public license
  * @author       Michael Albertsen (culex) <http://www.culex.dk>
- * @version      $Id:simple_now.php 2009-07-26 22:52 culex $
- * @since         File available since Release 1.0.0
+ * @version      $Id:simple_now.php 2009-08-03 13:30 culex $
+ * @since         File available since Release 1.0.4
  */
 
  /**
@@ -102,7 +102,7 @@ function b_Onair_Show() {
 	// Get data according to upcomming event
 	$sqlnext = "SELECT * FROM  ".$xoopsDB->prefix("oa_program")." WHERE '$nextstop' <= oa_start AND '$nowday2' = oa_day order by oa_start, oa_stop LIMIT 1";
 	$resultnext=$xoopsDB->queryF($sqlnext);
-	if ( $resultnext < 1) {
+	if ( getRowsNum($resultnext) < 1) {
 	$nowday2 = date("w", strtotime($nowday. " +1 days"));
 	$sqlnext2 = "SELECT * FROM  ".$xoopsDB->prefix("oa_program")." WHERE '$nowday2' = oa_day order by oa_start, oa_stop LIMIT 1";
 	$resultnext2=$xoopsDB->queryF($sqlnext2);
