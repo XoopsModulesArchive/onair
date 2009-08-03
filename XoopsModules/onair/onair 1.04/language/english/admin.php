@@ -26,6 +26,16 @@ define("_AM_ONAIR_EVENTAPPROVE","Event had been approved");
 define("_AM_ONAIR_ENTRY","Enter new event");
 define("_AM_ONAIR_NODESCRIPTION","No description for this event.");
 
+//added 1.04
+define("_AM_ONAIR_SONGSHOWALL", "Show all songs");
+define("_AM_ONAIR_SONGDEL","Song is deleted");
+define("_AM_ONAIR_SONGMOD","Song has been modified");
+define("_AM_ONAIR_SONG","Artist - Title");
+define("_AM_ONAIR_SONGID","Song id: ");
+define("_AM_ONAIR_SONGTITLE","Song title");
+define("_AM_ONAIR_SONGDATETIME","Date/time played");
+define("_AM_ONAIR_SONGSADMIN","Song data");
+
 //%%%%%%	Days	%%%%%
 define("_AM_ONAIR_SUNDAYNAME","Sunday");
 define("_AM_ONAIR_MONDAYNAME","Monday");
