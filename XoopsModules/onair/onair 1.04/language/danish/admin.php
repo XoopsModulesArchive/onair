@@ -27,6 +27,16 @@ define("_AM_ONAIR_ENTRY","Lav nyt emne");
 define("_AM_ONAIR_NODESCRIPTION","Ingen beskrivelse af dette program.");
 define ("_AM_ONAIR_PROGRAM_EDIT","Ret program");
 
+//added 1.04
+define("_AM_ONAIR_SONGSHOWALL", "Vis alle sange");
+define("_AM_ONAIR_SONGDEL","Sangen er slettet");
+define("_AM_ONAIR_SONGMOD","Song er rettet");
+define("_AM_ONAIR_SONG","Kunstner - Titel");
+define("_AM_ONAIR_SONGID","Sang id: ");
+define("_AM_ONAIR_SONGTITLE","Sangtitel");
+define("_AM_ONAIR_SONGDATETIME","Dato/tid spillet");
+define("_AM_ONAIR_SONGSADMIN","Sang data");
+
 //%%%%%%		Days 		%%%%%
 
 define("_AM_ONAIR_SUNDAYNAME","Søndag");
