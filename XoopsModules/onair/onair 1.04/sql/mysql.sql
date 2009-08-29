@@ -46,5 +46,6 @@ CREATE TABLE oa_charts (
   ch_songtopplace varchar(3) NOT NULL default '',
   ch_songthisweek varchar(3) NOT NULL default'',
   ch_songweek varchar(2) NOT NULL default '',
+  ch_songplaytime varchar(8) NOT NULL default '',
   PRIMARY KEY  (ch_songid)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=15 ;
