@@ -13,8 +13,8 @@
  * @copyright   The XOOPS Project http://sourceforge.net/projects/xoops/
  * @license       http://www.fsf.org/copyleft/gpl.html GNU public license
  * @author       Michael Albertsen (culex) <http://www.culex.dk>
- * @version      $Id:admin_header.php 2009-06-19 13:22 culex $
- * @since         File available since Release 1.0.0
+ * @version      $Id:admin_header.php 2009-09-09 13:25 culex $
+ * @since         File available since Release 1.0.5
  */
  
         include_once 'admin_header.php';

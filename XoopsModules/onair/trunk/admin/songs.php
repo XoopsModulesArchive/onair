@@ -13,8 +13,8 @@
  * @copyright   The XOOPS Project http://sourceforge.net/projects/xoops/
  * @license       http://www.fsf.org/copyleft/gpl.html GNU public license
  * @author       Michael Albertsen (culex) <http://www.culex.dk>
- * @version      $Id:songs.php 2009-06-19 13:22 culex $
- * @since         File available since Release 1.0.0
+ * @version      $Id:songs.php 2009-09-09 13:25 culex $
+ * @since         File available since Release 1.0.5
  */
         include_once 'admin_header.php';
 		include_once XOOPS_ROOT_PATH.'/class/xoopslists.php';
@@ -49,6 +49,7 @@ function onair_SongChoice() {
         xoops_cp_header();
         echo '<table class="outer" width="100%"><tr><td class="even">';
         echo "<a href='songs.php?op=Songlistshow'>"._AM_ONAIR_SONGSHOWALL."</a><br />";
+		echo "<a href='hitlist.php'>"._AM_ONAIR_UPLOADSONGS."</a><br />";
 		echo "<a href='index.php?op=choice'>"._AM_ONAIR_BACK2INDEX."</a><br />";
         echo '</td></tr></table>';
         xoops_cp_footer();
@@ -153,8 +154,7 @@ function onair_SongShow() {
 		$myts =& MyTextSanitizer::getInstance();
         echo "<table border='0' width='100%' class='outer' align='center'>
         <tr><td class='even'><b>"._AM_ONAIR_SONGID."</b></td><td class='even'><b>"
-		._AM_ONAIR_SONGTITLE."</b></td><td class='even'><b>"
-		._AM_ONAIR_SONGDATETIME."</b></td><td colspan='2' class='even'><center><b>"
+		._AM_ONAIR_SONGTITLE."</b></td><td colspan='2' class='even'><center><b>"
 		._AM_ONAIR_ACTION."</center></b></td></tr>";
 
 
@@ -174,7 +174,6 @@ function onair_SongShow() {
 		}
 		
 		echo "</td>
-		<td class='odd'>$oa_songid&nbsp;</td>
 		<td class='odd'>$oa_songsong&nbsp;</td>
 		<td class='odd'>$oa_datetime&nbsp;</td>
 		<td class='odd'><a href='songs.php?op=SongEdit&amp;oa_songid=$oa_songid'>"._AM_ONAIR_EDIT."</a></td>

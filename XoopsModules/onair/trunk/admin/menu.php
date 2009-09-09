@@ -13,8 +13,8 @@
  * @copyright   The XOOPS Project http://sourceforge.net/projects/xoops/
  * @license       http://www.fsf.org/copyleft/gpl.html GNU public license
  * @author       Michael Albertsen (culex) <http://www.culex.dk>
- * @version      $Id:menu.php 2009-06-19 13:22 culex $
- * @since         File available since Release 1.0.0
+ * @version      $Id:menu.php 2009-09-99 13:25 culex $
+ * @since         File available since Release 1.0.5
  */
  
  // Items in the left-side menu for amin
@@ -27,7 +27,9 @@ $adminmenu[3]['title'] = _MI_ONAIR_ADDIMAGE;
 $adminmenu[3]['link'] = "admin/index.php?op=ImageUpload";
 $adminmenu[4]['title'] = _MI_ONAIR_PLAYLISTMENU;
 $adminmenu[4]['link'] = "admin/playlist.php?op=Playlistshow";
-$adminmenu[5]['title'] = _MI_ONAIR_HELP;
-$adminmenu[5]['link'] = "admin/help.php";
+$adminmenu[5]['title'] = _MI_ONAIR_SONGS;
+$adminmenu[5]['link'] = "admin/songs.php";
+$adminmenu[6]['title'] = _MI_ONAIR_HELP;
+$adminmenu[6]['link'] = "admin/help.php";
 
 ?>
