@@ -35,7 +35,10 @@ define("_AM_ONAIR_SONG","Kunstner - Titel");
 define("_AM_ONAIR_SONGID","Sang id: ");
 define("_AM_ONAIR_SONGTITLE","Sangtitel");
 define("_AM_ONAIR_SONGDATETIME","Dato/tid spillet");
-define("_AM_ONAIR_SONGSADMIN","Sang data");
+
+//Added 1.05
+define ("_AM_ONAIR_UPLOADSONGS","Opload sang data");
+define ("_AM_ONAIR_UPLOADSONGSDESC","Vælg her formatet for din afspiller (eller afspiller plugin). (DireTTore or Playtime_Winamp_Plugin).<br /><br />Se indholdsformat hvis du skal oprette en customfil du skal oploade.<br><br>Sangene vil blive lagt individuelt in i en database med felterne dato, starttid, ugenummer, Artist - title, og år, og kan herefter bruges til at lave en chart / Hitliste af dine meste spillede sange.<br>");
 
 //%%%%%%		Days 		%%%%%
 

@@ -20,6 +20,7 @@ define("_MI_ONAIR_SHOTWIDTH","Width of shots");
 define("_MI_ONAIR_TIMETYPE","Choose timetype Eu (24 hours) or US (12 hours): ");
 define("_MI_ONAIR_ALLOWHTML","Allow HTML?");
 define("_MI_ONAIR_PROGRAM_EDIT","Show/Edit/Delete/Approve");
+define("_MI_ONAIR_SONGS","Song Options"); // Version 1.05
 define("_MI_ONAIR_ADDNEW","New Event");
 define("_MI_ONAIR_ADDIMAGE","Upload Image");
 define("_MI_ONAIR_CONFIG","Settings");

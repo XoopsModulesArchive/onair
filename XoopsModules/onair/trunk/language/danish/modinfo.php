@@ -28,6 +28,7 @@ define("_MI_ONAIR_IMAGESALLOW","Tillad images?");
 define("_MI_ONAIR_LINEBREAK","Anvend Linjeskift ?");
 define("_MI_ONAIR_ADMINMAIL","Admin-besked ved ny begivenhed?");
 define("_MI_ONAIR_PROGRAM_EDIT","Vis/Ret/Slet");
+define("_MI_ONAIR_SONGS","Sang styring"); // Version 1.05
 define("_MI_ONAIR_ADDNEW","Opret event");
 define("_MI_ONAIR_ADDIMAGE","Opload billede");
 define("_MI_ONAIR_CONFIG","Indstillinger");
