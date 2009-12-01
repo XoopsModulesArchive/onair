@@ -31,12 +31,14 @@ function b_Onair_Show() {
 		// Language files used to translate content when called externaly by jquery
 		
 	$oa_lng = onair_GetModuleOption('language');
+	if (!defined('_MB_ONAIR_COMINGUP')) { 
 	if ( file_exists(XOOPS_ROOT_PATH.'/modules/onair/language/'.$oa_lng.'/blocks.php') ) {
 	include(XOOPS_ROOT_PATH.'/modules/onair/language/'.$oa_lng.'/blocks.php');
 	}
 	else {
 	include(XOOPS_ROOT_PATH.'/modules/onair/language/english/blocks.php');
 	}
+	} 
 	// Get date now
 	$nowday=date('w');
 	// Set absolute maximum time of the day

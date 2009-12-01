@@ -463,14 +463,15 @@ if ($xoopsModuleConfig['timetype']==1){
  */ 
 
 function onair_File_Get_Contents_Utf8($fn) {
-     $content = file_get_contents($fn);
+     $oa_filecontent = onair_GetModuleOption('isostyle_txtfile');
+	 $content = file_get_contents($fn);
 	 $content = str_replace("_", " ", $content); // replace underline with space
 	 $content = str_replace (".mp3",  "",  $content); // removes Extensions
 	 $content = str_replace (".wav",  "",  $content); // removes Extensions
 	 $content = preg_replace('/\s\s+/', ' ', $content);
 	 $content = strtolower($content); // Make all letters lowercase
       return mb_convert_encoding($content, 'UTF-8',
-          mb_detect_encoding($content, 'UTF-8, ISO-8859-1', true));
+          mb_detect_encoding($content, $oa_filecontent, true));
 } 
  /**
  * Changes backgroundcolor in td where program is onair
@@ -506,58 +507,200 @@ function onair_ChangeBg ($day,$start,$stop){
 			$backgroundcolor = 'blank.png';
 			}
 			return $backgroundcolor;
-} 
- /**
- * Updates or upload songinfo to database
- * with id, time, day, week, and song info
- *
- * @param   Place       $Server side
- * @param   integer     $repeat indefinitely
- * @return  Status
- */ 
-function onair_CheckSong($song){
-global $xoopsDB, $myts;
-$myts =& MyTextSanitizer::getInstance();
-$time=time();
-$day=date('w');
-$week=date('W');
-$year=date('Y');
+}
 
-		// Do something to last entry
-		$query = "SELECT * FROM ".$xoopsDB->prefix('oa_hitlist')." ORDER BY oa_songid DESC LIMIT 1";
-		$query_error = NULL; 
-		$result = $xoopsDB->query($query);
-		$num_results2 = $xoopsDB->getRowsNum($result);		
-		$msg = array();
-			while ($sqlfetch=$xoopsDB->fetchArray($result)) {
-			$msg['oa_songid'] = $myts->htmlSpecialChars($sqlfetch["oa_songid"]);
-			$msg['oa_songtime'] = $myts->htmlSpecialChars($sqlfetch["oa_songtime"]);
-			$msg['oa_songday'] = $myts->htmlSpecialChars($sqlfetch["oa_songday"]);
-			$msg['oa_songweek'] = $myts->htmlSpecialChars($sqlfetch["oa_songweek"]);
-			$msg['oa_songyear'] = $myts->htmlSpecialChars($sqlfetch["oa_songyear"]);
-			$msg['oa_songsong'] = $myts->htmlSpecialChars($sqlfetch["oa_songsong"]);
-			if ($msg['oa_songsong'] == $song)
-			{
-			
-			$sql = "UPDATE ".$xoopsDB->prefix('oa_hitlist')." SET oa_songtime = ".$xoopsDB->quoteString($time)
-		.", oa_songday = ".$xoopsDB->quoteString($day).", oa_songweek = ".$xoopsDB->quoteString($week).", oa_songyear = "
-		.$xoopsDB->quoteString($year).", oa_songsong = ".$xoopsDB->quoteString($song)
-		." WHERE oa_songid = ".intval($msg['oa_songid'])."";
-		$result = $xoopsDB->queryF($sql);
-		}
-		
-	 }
-			if ($msg['oa_songsong'] != $song)
-			{
-			// Insert data
-			
-		$sqlinsert="INSERT INTO ".$xoopsDB->prefix("oa_hitlist")." (oa_songid, oa_songtime, oa_songday, oa_songweek, oa_songyear,oa_songsong) VALUES ('', ".$xoopsDB->quoteString($time).", ".$xoopsDB->quoteString($day).", ".$xoopsDB->quoteString($week).", ".$xoopsDB->quoteString($year).", ".$xoopsDB->quoteString($song).")";
-		$result = $xoopsDB->queryF($sqlinsert);
-		if (!$result = $xoopsDB->query($sqlinsert)) {
-                
-                }
+function onair_clean_illegalSongData() {
+	global $xoopsDB,$xoopsTpl,$xoopsModuleConfig;
+	// Cleaning up empty or illegal database entries //
+	$clean1="DELETE FROM ".$xoopsDB->prefix("oa_hitlist")." WHERE oa_songsong = '[SESSION TERMINATED]'";
+	
+	if (!$result = $xoopsDB->queryF($clean1)) 
+	{
+    } else {}				
+
+	$clean2="DELETE FROM ".$xoopsDB->prefix("oa_hitlist")." WHERE oa_songsong = '[AUTOMATION STOPPED]'";
+	
+	if (!$result = $xoopsDB->queryF($clean2)) 
+	{
+    } else {}
+	
+	$clean3="DELETE FROM ".$xoopsDB->prefix("oa_hitlist")." WHERE oa_songsong = '[AUTOMATION STARTED]'";
+	
+	if (!$result = $xoopsDB->queryF($clean3)) 
+	{
+    } else {}	
+
+	$clean4="DELETE FROM ".$xoopsDB->prefix("oa_hitlist")." WHERE oa_songsong = '-------------------'";
+	
+	if (!$result = $xoopsDB->queryF($clean4)) 
+	{
+    } else {}	
+
+	$clean5="DELETE FROM ".$xoopsDB->prefix("oa_hitlist")." WHERE oa_songsong = ' TRACK / EVENT'";
+	
+	if (!$result = $xoopsDB->queryF($clean5)) 
+	{
+    } else {}	
+
+	$clean6="DELETE FROM ".$xoopsDB->prefix("oa_hitlist")." WHERE oa_songsong = 'DEMONSTRATION LOG FILE'";
+	
+	if (!$result = $xoopsDB->queryF($clean6)) 
+	{
+    } else {}
+
+	$clean7="DELETE FROM ".$xoopsDB->prefix("oa_hitlist")." WHERE oa_songsong = ''";
+	
+	if (!$result = $xoopsDB->queryF($clean7)) 
+	{
+    } else {}
+
+	$clean8="DELETE FROM ".$xoopsDB->prefix("oa_hitlist")." WHERE oa_songsong = '1.1\r'";
+	
+	if (!$result = $xoopsDB->queryF($clean8)) 
+	{
+    } else {}
+	$clean9="DELETE FROM ".$xoopsDB->prefix("oa_hitlist")." WHERE oa_songsong = '[SESSION INITIATED]'";
+	if (!$result = $xoopsDB->queryF($clean9)) 
+	{
+    } else {}
+	
+	$clean10="DELETE FROM ".$xoopsDB->prefix("oa_hitlist")." WHERE oa_songsong = '[VOICE-TRACK]'";
+	if (!$result = $xoopsDB->queryF($clean10)) 
+	{
+    } else {}
 	}
-}	
 
+	function onair_ChartLastWeek($oa_songsong,$oa_songweek, $year) {
+		//include XOOPS_ROOT_PATH.'/header.php';
+		global $xoopsDB,$myts;
+			$msg = array();
+			$myts =& MyTextSanitizer::getInstance();
+			$lastweek = $oa_songweek-1;
+			if ($lastweek <= 0) {
+			$lastweek = 52;
+			$year = $year -1;
+			}
+			
+			$a = 1;
+		$query = "SELECT oa_songsong, count( * ) FROM ".$xoopsDB->prefix("oa_hitlist")." WHERE oa_songweek = ".intval($lastweek)." AND oa_songyear = ".intval($year)." GROUP BY oa_songsong ORDER BY COUNT( * ) DESC";
+			$result = $xoopsDB->query($query);
+			$i = $xoopsDB->getRowsNum($result);
+			while ($sqlfetch=$xoopsDB->fetchArray($result)) {
+					if ($oa_songsong == $sqlfetch['oa_songsong']) 
+					{
+						if ($a>20 and $a<= 30) {return "Re";break;}
+						if ($a>30) {return "New";break;}
+							else{return $a;
+					break;}
+					} 
+					else {
+					$a++;
+			}
+	}
+	}
+	
+	function onair_GetThisWeekPos ($weeknr, $songdata, $year) { 
+	global $xoopsDB, $myts, $lastweek;
+	$myts =& MyTextSanitizer::getInstance();
+	$sql = "SELECT oa_songsong, count(*) FROM ".$xoopsDB->prefix("oa_hitlist")." where oa_songweek = ".intval($weeknr)." and oa_songyear = ".intval($year)." GROUP by oa_songsong ORDER by count(*) DESC LIMIT 20";
+	$result = $xoopsDB->queryF($sql);
+	$x=1;
+	while($row = $xoopsDB->fetchArray($result)) {
+	if ($songdata == $row['oa_songsong']) {
+	return $x;
+	break;
+	} else {
+	$x++;
+}
+}
+	}
+	
+function onair_DateOfWeek($year, $week)
+{
+	if($week<10) {$week = "0".$week;}
+    $StartOfWeek = date("d.m.Y", strtotime("{$year}-W{$week}-1")); //Returns the date of monday in week
+    $EndOfWeek = date("d.m.Y", strtotime("{$year}-W{$week}-7")); //Returns the date of sunday in week
+    return "{$StartOfWeek} - {$EndOfWeek}";
+}
 
+function onair_WeeksTotal($song,$week,$year)
+{
+	global $xoopsDB, $myts;
+	$myts =& MyTextSanitizer::getInstance();
+	$sql="SELECT COUNT(DISTINCT oa_songweek ) as sum FROM ".$xoopsDB->prefix('oa_hitlist')." WHERE oa_songsong = '".$myts->addSlashes($song)."' AND oa_songweek <= ".intval($week)." AND oa_songyear = ".$myts->addSlashes($year)."";
+    $result = $xoopsDB->queryF($sql);
+	while($row = $xoopsDB->fetchArray($result)) {
+	$sum = $row['sum'];
+	}
+	return $sum;
+}
+
+function onair_TopPlace($song,$year)
+{
+global $xoopsDB;
+$myts =& MyTextSanitizer::getInstance();
+$newarray = array();
+for ($x=1;$x<=52;$x++) {
+$sql="SELECT oa_songsong, count(*) FROM ".$xoopsDB->prefix("oa_hitlist")." WHERE oa_songweek = ".intval($x)." AND oa_songyear = ".intval($year)." GROUP by oa_songsong ORDER by count(*) DESC";
+$result = $xoopsDB->queryF($sql);
+$count = 1;
+while ($sqlfetch=$xoopsDB->fetchArray($result)) {
+if ($song == $sqlfetch['oa_songsong']) {
+array_push($newarray,$count);
+break;
+}
+else {
+$count++;
+}
+}  
+	}
+	return min($newarray);
+	}
+
+function onair_GetChartFromWeek ($week,$year) {
+global $xoopsDB,$myts,$xoopsTpl;
+	$msg = array();
+	$query = "SELECT oa_songsong, count(*) FROM ".$xoopsDB->prefix("oa_hitlist")." where oa_songweek = ".intval($week)." AND oa_songyear = ".intval($year)." GROUP by oa_songsong ORDER by count(*) DESC limit 20";
+	$result = $xoopsDB->query($query);
+	$i = $xoopsDB->getRowsNum($result);
+	$myts =& MyTextSanitizer::getInstance();
+	for ( $loop = 1; $loop <= $i; $loop ++) {
+	$counter = 1;
+	while ($sqlfetch=$xoopsDB->fetchArray($result)) {
+	$msg['ch_chartweek'] = $myts->htmlSpecialChars($week);
+	$msg['ch_charttitle'] = $myts->htmlSpecialChars(onair_DateOfWeek($year, $week));
+	$msg["ch_chartsong"] = $myts->htmlSpecialChars($sqlfetch["oa_songsong"]);
+	$msg["ch_thisweek"] = $myts->htmlSpecialChars(onair_GetThisWeekPos ($week, $sqlfetch["oa_songsong"], $year));
+	$msg["ch_lastweek"] = $myts->htmlSpecialChars(onair_ChartLastWeek($sqlfetch["oa_songsong"],$week,$year));
+	if ($msg["ch_thisweek"] < $msg["ch_lastweek"])
+	{
+	$msg["ch_arrow"] = "<img src = 'images/icons/arrow_up.png'></img>";
+	}
+	if ($msg["ch_thisweek"] > $msg["ch_lastweek"])
+	{
+	$msg["ch_arrow"] = "<img src = 'images/icons/arrow_down.png'></img>";
+	}
+	if ($msg["ch_thisweek"] == $msg["ch_lastweek"])
+	{
+	$msg["ch_arrow"] = "<img src = 'images/icons/nochange.png'></img>";
+	}
+	$msg["ch_weekstotal"] = onair_WeeksTotal($myts->htmlSpecialChars($msg["ch_chartsong"]),"$week",$year);
+	$msg["ch_peak"] = onair_TopPlace($myts->htmlSpecialChars($msg["ch_chartsong"]),$year);
+	$xoopsTpl->assign('lang_title', onair_DateOfWeek($year, $week));
+	$xoopsTpl->assign('lang_position', _MD_ONAIR_POSITION);
+	$xoopsTpl->assign('lang_thisweek', _MD_ONAIR_THISWEEK);
+	$xoopsTpl->assign('lang_lastweek', _MD_ONAIR_LASTWEEK);
+	$xoopsTpl->assign('lang_peakweak', _MD_ONAIR_PEAKWEEK);
+	$xoopsTpl->assign('lang_arrow', '');
+	$xoopsTpl->assign('lang_header',_MD_ONAIR_CHARTHEADER);
+	$xoopsTpl->assign('lang_song', _MD_ONAIR_SONG);
+	$xoopsTpl->assign('lang_weekstotal', _MD_ONAIR_WEEKSTOTAL);
+	$xoopsTpl->append('info', $msg);
+	}
+	$counter++;
+	}
+	}
+	 
+	 
+	
 ?>

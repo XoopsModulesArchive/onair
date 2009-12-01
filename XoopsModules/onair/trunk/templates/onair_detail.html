@@ -1,21 +1,3 @@
-<style type="text/css">
-.oa_pullquote {
-			float:right;
-			width:25%;
-			padding:8px;
-			border:1px solid black;
-			font-size:.8em;
-			margin:20px;
-			background-color:whitesmoke;}
-
-.oa_image {
-			float:left;
-			margin:5px;
-			padding:5px;}
-</style>
-
-
-
 <{section name=i loop=$info}>
 <table cellpadding="0" cellspacing="0" border="0">
   <tr>
@@ -34,11 +16,10 @@
         <h1><b><{$info[i].oa_title}></b></h1><h3><{$info[i].oa_with}></h3><h2><{$info[i].oa_name}></h2></center></td>
   </tr>
       <tr>
-        <td><span class="oa_pullquote" align="center">
-<br><{$info[i].oa_day}><br>
-<{$info[i].oa_start}> - <{$info[i].oa_stop}><br><br></span>
-
-<br><span class="oa_image"><{$info[i].oa_image}></span><span><{$info[i].oa_description}></span></td>
+        <td><span class="odd" style="float:right;width:25%;padding:8px;border:1px solid black;font-size:.8em;margin:20px;" align="center"><br><{$info[i].oa_day}><br><{$info[i].oa_start}> - <{$info[i].oa_stop}><br><br></span>
+<br><span style="float:left;
+			margin:5px;
+			padding:5px;"><{$info[i].oa_image}></span><span><{$info[i].oa_description}></span></td>
       </tr>
 
 </table>

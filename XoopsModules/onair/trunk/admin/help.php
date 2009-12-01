@@ -60,6 +60,66 @@ echo "<p>Culex On-air was originally build as a radio related script to run a ro
   <label>
     <input style='background-color:#FF6' value='[np:Artist1] - [np:Title1]' size='26' maxlength='26' />
   </label>
-</form><br>The template.html file is usually placed in your <em>c:\Program Files\Winamp\np_templates</em> Folder.<br><br>That's it!<br>Any other question write in my forum <a href='http://www.culex.dk/forum/viewforum.php?forum=1'><strong>here</strong></a><br><br>";
+</form><br>The template.html file is usually placed in your <em>c:\Program Files\Winamp\np_templates</em> Folder.<br><br>That's it!<br>";
+
+echo "Adding songs to chart / hitlist<br /> ------------<br><br>You have 3 diffent formats to add hitlists to the working module. Use the file uploader to send the textfile to the website and parse the various songs to the database and the script will calculate your chart for you.<br><br>Onair can use 3 different types of playlists (direttore log file, Playtime Winamp Plugin, and Freehand). <br><br><strong>Direttore log file</strong> is a feature you set in the DireTTore program settings (save log file to disk) and the program will - if this feature is enabled - save a text file to your HD every time you use Direttore. Onair will uplod this file and separate the songs, dates etc to the database automaticly.<br><br><strong>Playtime Winamp Plugin</strong> <a href'http://www.winamp.com/plugin/playtime-winamp-plugin/56100'>Get it here</a> is a plugin you set up to create a playlist log file from Winamp. Bare in mind this plugin uses only one file to all days, weeks etc. So make a copy/past from the newest dates to another text file and upload so you do not upload the old + new songs every time you update.<br><br><strong>FreeHand</strong> is a custom text file parser. This way you can create your own special text playlist files and upload to chart. This uses NewLine as separator and ; as divider to each line, song etc.<br><br><strong>Use like this example</strong><br><br>You play the song 'red hot chili peppers - under the bridge' on 23rd December 1999, at 03:55:00 <br>'Red hot chili peppers - Under the bridge;23-12-99;03:55:00'<br>br>That means 'artist - title;playtime dd-mm-yyyy;hh:mm:ss'<br><br>Another example can be this:<br><br>ATB - 9 PM (Till I Come);21-10-2009;02:32:00
+ATB - 9 PM (Till I Come);21-10-2009;02:32:00
+ATB - 9 PM (Till I Come);21-10-2009;02:32:00
+ATB - 9 PM (Till I Come);21-10-2009;02:32:00
+ATB - 9 PM (Till I Come);21-10-2009;02:32:00
+ATB - 9 PM (Till I Come);21-10-2009;02:32:00
+ATB - 9 PM (Till I Come);21-10-2009;02:32:00
+ATB - 9 PM (Till I Come);21-10-2009;02:32:00
+ATB - 9 PM (Till I Come);21-10-2009;02:32:00
+ATB - 9 PM (Till I Come);21-10-2009;02:32:00
+Metallica - 15 - Stone Dead Forever;21-10-2009;04:44:00
+Metallica - 15 - Stone Dead Forever;21-10-2009;04:44:00
+Metallica - 15 - Stone Dead Forever;21-10-2009;04:44:00
+Metallica - 15 - Stone Dead Forever;21-10-2009;04:44:00
+Metallica - 15 - Stone Dead Forever;21-10-2009;04:44:00
+Metallica - 15 - Stone Dead Forever;21-10-2009;04:44:00
+Metallica - 15 - Stone Dead Forever;21-10-2009;04:44:00
+Metallica - 15 - Stone Dead Forever;21-10-2009;04:44:00
+Metallica - 15 - Stone Dead Forever;21-10-2009;04:44:00
+Paris Hilton - Stars Are Blind;21-10-2009;05:12:00
+Paris Hilton - Stars Are Blind;21-10-2009;05:12:00
+Paris Hilton - Stars Are Blind;21-10-2009;05:12:00
+Paris Hilton - Stars Are Blind;21-10-2009;05:12:00
+Paris Hilton - Stars Are Blind;21-10-2009;05:12:00
+Paris Hilton - Stars Are Blind;21-10-2009;05:12:00
+Paris Hilton - Stars Are Blind;21-10-2009;05:12:00
+Paris Hilton - Stars Are Blind;21-10-2009;05:12:00
+Paulina Rubio - Te daría mi vida;21-10-2009;04:23:00
+Paulina Rubio - Te daría mi vida;21-10-2009;04:23:00
+Paulina Rubio - Te daría mi vida;21-10-2009;04:23:00
+Paulina Rubio - Te daría mi vida;21-10-2009;04:23:00
+Paulina Rubio - Te daría mi vida;21-10-2009;04:23:00
+Paulina Rubio - Te daría mi vida;21-10-2009;04:23:00
+Paulina Rubio - Te daría mi vida;21-10-2009;04:23:00
+Prodigy - Breathe;21-10-2009;04:23:00
+Prodigy - Breathe;21-10-2009;04:23:00
+Prodigy - Breathe;21-10-2009;04:23:00
+Prodigy - Breathe;21-10-2009;04:23:00
+Prodigy - Breathe;21-10-2009;04:23:00
+Prodigy - Breathe;21-10-2009;04:23:00
+Robin S - Show Me Love;21-10-2009;03:44:00
+Robin S - Show Me Love;21-10-2009;03:44:00
+Robin S - Show Me Love;21-10-2009;03:44:00
+Robin S - Show Me Love;21-10-2009;03:44:00
+Robin S - Show Me Love;21-10-2009;03:44:00
+Sash! Feat. Rodriguez - Ecuador;21-10-2009;03:55:00
+Sash! Feat. Rodriguez - Ecuador;21-10-2009;03:55:00
+Sash! Feat. Rodriguez - Ecuador;21-10-2009;03:55:00
+Sash! Feat. Rodriguez - Ecuador;21-10-2009;03:55:00
+Texas - I Don't Want A Lover (2001 Mix);21-10-2009;04:23:00
+Texas - I Don't Want A Lover (2001 Mix);21-10-2009;04:23:00
+Texas - I Don't Want A Lover (2001 Mix);21-10-2009;04:23:00
+Ultra Nate - New Kind Of Medicine;21-10-2009;04:01:00
+Ultra Nate - New Kind Of Medicine;21-10-2009;04:01:00
+Yves Larock - Rise Up (Harry 'Choo Choo' Romero Remix);21-10-2009;04:44:00
+Yves Larock - Rise Up (Harry 'Choo Choo' Romero Remix);21-10-2009;04:44:00
+<br>Which shows that the place in the chart is descided from the number of this played.";
+
+echo "Any other question write in my forum <a href='http://www.culex.dk/forum/viewforum.php?forum=1'><strong>here</strong></a><br><br>";
   xoops_cp_footer();
 ?>

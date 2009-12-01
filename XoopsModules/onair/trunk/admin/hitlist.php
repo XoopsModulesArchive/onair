@@ -14,8 +14,8 @@
  * @copyright   The XOOPS Project http://sourceforge.net/projects/xoops/
  * @license       http://www.fsf.org/copyleft/gpl.html GNU public license
  * @author       Michael Albertsen (culex) <http://www.culex.dk>
- * @version      $Id:post.php 2009-09-09 13:24 culex $
- * @since         File available since Release 1.0.5
+ * @version      $Id:post.php 2009-06-19 13:22 culex $
+ * @since         File available since Release 1.0.0
  */
       include_once 'admin_header.php';
 
@@ -24,7 +24,9 @@ include XOOPS_ROOT_PATH.'/class/xoopsformloader.php';
 include XOOPS_ROOT_PATH.'/include/xoopscodes.php';
 include '../include/functions.php';
 include '../include/classes.php';
-		
+
+onair_clean_illegalSongData();
+
 	global $xoopsModule, $xoopsDB, $myts, $plistop, $xoopsModuleConfig;    		
 	$myts =& MyTextSanitizer::getInstance();
 	
@@ -49,7 +51,7 @@ function onair_ImageForm() {
 	$plist_box->setExtra( "size ='50'") ;
 	$my_form->addElement($plist_box); 
 	$select = new XoopsFormSelect("Selection","select",$value = null,1,$multiple=False);
-	$options = array("Playtime (winamp)","Direttore Logfile");
+	$options = array("Playtime (winamp)","Direttore Logfile","Freehand");
 	$select->addOptionArray($options);
 	$button_tray = new XoopsFormElementTray('' ,'');
 	$button_tray->addElement(new XoopsFormButton('', 'plistpost',"Submit", 'submit'));
@@ -83,6 +85,9 @@ case "plistpost":
 	}
 	if ($select == '1'){
 	onair_ExplodeTextDirettore($_POST['select'],$savename);
+	}
+	if ($select == '2'){
+	onair_ExplodeTextFreehand($_POST['select'],$savename);
 	}
 	} else { 
 	//redirect_header("index.php",5,"".$uploader->getErrors());
@@ -124,7 +129,7 @@ break;
 		$year = date('Y', strtotime($tmp[1]));
 		$playtime = date('i:s', $tmp[11]);
 		$date = date('d-m-Y', strtotime($tmp[0]));
-$sql="INSERT INTO ".$xoopsDB->prefix("oa_hitlist")." (oa_songid, oa_songsong, oa_songtime, oa_songday, oa_songweek, oa_songyear, oa_songplaytime) VALUES ('', ".$xoopsDB->quoteString($tmp['3']).", ".$xoopsDB->quoteString($date).", ".$xoopsDB->quoteString($dayname).", ".$xoopsDB->quoteString($weekname).", ".$xoopsDB->quoteString($year).", ".$xoopsDB->quoteString($playtime).")";
+$sql="INSERT INTO ".$xoopsDB->prefix("oa_hitlist")." (oa_songid, oa_songsong, oa_songtime, oa_songday, oa_songweek, oa_songyear, oa_songplaytime) VALUES ('', ".$xoopsDB->quoteString(htmlspecialchars($tmp[3],ENT_QUOTES)).", ".$xoopsDB->quoteString($date).", ".$xoopsDB->quoteString($dayname).", ".$xoopsDB->quoteString($weekname).", ".$xoopsDB->quoteString($year).", ".$xoopsDB->quoteString($playtime).")";
 	if (!$result = $xoopsDB->query($sql)) {
 				$import = AM_WRONGFILEFORMAT;
                 }				
@@ -148,11 +153,11 @@ $sql="INSERT INTO ".$xoopsDB->prefix("oa_hitlist")." (oa_songid, oa_songsong, oa
 	$data = fread($fp, filesize($file));
 	fclose($fp);
 	$data1 = str_replace("   ", "\t",$data);
-	
 	$output = explode ("\t", $data1);
 	$datefinder = explode ("\t", $data1);
 	foreach($datefinder as $breaker) {
 		$bk = explode ("\r", $breaker);
+		$oa_song = htmlspecialchars($tmp[0],ENT_QUOTES);
 		$oa_date = date( "d-m-Y", strtotime( $breaker[5] ) );
 		$oa_weekname = date( "W", strtotime( $breaker[5] ) );
 		$dayname = date( "w", strtotime( $breaker[5] ) );
@@ -164,7 +169,7 @@ $sql="INSERT INTO ".$xoopsDB->prefix("oa_hitlist")." (oa_songid, oa_songsong, oa
 		$tmp = explode ("\n", $tmp0);
 		$playtime = $tmp[1];
  
- $sql="INSERT INTO ".$xoopsDB->prefix("oa_hitlist")." (oa_songid, oa_songsong, oa_songtime, oa_songday, oa_songweek, oa_songyear, oa_songplaytime) VALUES ('', ".$xoopsDB->quoteString($tmp[0]).", ".$xoopsDB->quoteString($oa_date).", ".$xoopsDB->quoteString($dayname).", ".$xoopsDB->quoteString($oa_weekname).", ".$xoopsDB->quoteString($year).", ".$xoopsDB->quoteString($playtime).")";
+ $sql="INSERT INTO ".$xoopsDB->prefix("oa_hitlist")." (oa_songid, oa_songsong, oa_songtime, oa_songday, oa_songweek, oa_songyear, oa_songplaytime) VALUES ('', ".$xoopsDB->quoteString($oa_songsong).", ".$xoopsDB->quoteString($oa_date).", ".$xoopsDB->quoteString($dayname).", ".$xoopsDB->quoteString($oa_weekname).", ".$xoopsDB->quoteString($year).", ".$xoopsDB->quoteString($playtime).")";
 	
 	if (!$result = $xoopsDB->query($sql)) 
 	{
@@ -177,51 +182,40 @@ $sql="INSERT INTO ".$xoopsDB->prefix("oa_hitlist")." (oa_songid, oa_songsong, oa
 	$import = AM_THANKS;
 	}
 	redirect_header("hitlist.php",2,$import); 
+	}
 	
-	// Cleaning up empty or illegal database entries //
 	
-	$clean1="DELETE FROM ".$xoopsDB->prefix("oa_hitlist")." WHERE oa_songsong = '[SESSION TERMINATED]'";
-	
-	if (!$result = $xoopsDB->query($clean1)) 
+		function onair_ExplodeTextFreehand($select,$savedname) {
+	global $xoopsDB,$uploader,$plist_dir,$myts;
+	$oa_listtype = $_POST['select'];
+	if ($oa_listtype == "2") {
+	// Read data to database
+	$file = $plist_dir."/".$uploader->getSavedFileName();
+	$fp = fopen($file, "r");
+	$data = fread($fp, filesize($file));
+	fclose($fp);
+	$output = preg_split('/[\r\n]+/', $data, -1, PREG_SPLIT_NO_EMPTY);
+	$output1 = str_replace("''", "'",$output);
+	$myts =& MyTextSanitizer::getInstance();
+	foreach($output1 as $var) {
+		$tmp = explode(";", $var);
+		$oa_song = htmlspecialchars($tmp[0],ENT_QUOTES);
+		$oa_date = $tmp[1];
+		$weekname = date('W', strtotime($tmp[1])); 
+		$dayname = date('w', strtotime($tmp[1]));
+		$year = date('Y', strtotime($tmp[1]));
+		$playtime = $tmp[2];
+		$date = date('d-m-Y', strtotime($tmp[1]));
+$sql="INSERT INTO ".$xoopsDB->prefix("oa_hitlist")." (oa_songid, oa_songsong, oa_songtime, oa_songday, oa_songweek, oa_songyear, oa_songplaytime) VALUES ('', ".$xoopsDB->quoteString($oa_song).", ".$xoopsDB->quoteString($date).", ".$xoopsDB->quoteString($dayname).", ".$xoopsDB->quoteString($weekname).", ".$xoopsDB->quoteString($year).", ".$xoopsDB->quoteString($playtime).")";
+	if (!$result = $xoopsDB->query($sql)) {
+				$import = AM_WRONGFILEFORMAT;
+                }				
+	}		
+	}
+	else
 	{
-    } else {}				
-
-	$clean2="DELETE FROM ".$xoopsDB->prefix("oa_hitlist")." WHERE oa_songsong = '[AUTOMATION STOPPED]'";
-	
-	if (!$result = $xoopsDB->query($clean2)) 
-	{
-    } else {}
-	
-	$clean3="DELETE FROM ".$xoopsDB->prefix("oa_hitlist")." WHERE oa_songsong = '[AUTOMATION STARTED]'";
-	
-	if (!$result = $xoopsDB->query($clean3)) 
-	{
-    } else {}	
-
-	$clean4="DELETE FROM ".$xoopsDB->prefix("oa_hitlist")." WHERE oa_songsong = '-------------------'";
-	
-	if (!$result = $xoopsDB->query($clean4)) 
-	{
-    } else {}	
-
-	$clean5="DELETE FROM ".$xoopsDB->prefix("oa_hitlist")." WHERE oa_songsong = ' TRACK / EVENT'";
-	
-	if (!$result = $xoopsDB->query($clean5)) 
-	{
-    } else {}	
-
-	$clean6="DELETE FROM ".$xoopsDB->prefix("oa_hitlist")." WHERE oa_songsong = 'DEMONSTRATION LOG FILE'";
-	
-	if (!$result = $xoopsDB->query($clean6)) 
-	{
-    } else {}
-
-	$clean7="DELETE FROM ".$xoopsDB->prefix("oa_hitlist")." WHERE oa_songsong = ''";
-	
-	if (!$result = $xoopsDB->query($clean7)) 
-	{
-    } else {}
-	
-	
+	$import = AM_THANKS;
+	}
+	//redirect_header("hitlist.php",2,$import);
 	}
 	?>

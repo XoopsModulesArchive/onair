@@ -22,7 +22,7 @@
 		include XOOPS_ROOT_PATH.'/include/xoopscodes.php';
 		include '../include/functions.php';
 		include '../include/classes.php';
-		
+		onair_clean_illegalSongData();
 		$song_timetype = onair_GetModuleOption('timetype');
 		
         if (isset($_GET['op']) && $_GET['op'] == 'Songlistshow') {
@@ -166,16 +166,9 @@ function onair_SongShow() {
 		$oa_songweek = $myrow['oa_songweek'];
 		$oa_songtime = $myrow['oa_songtime'];
 		$oa_songsong = $myts->htmlSpecialChars($myts ->stripSlashesGPC($myrow['oa_songsong']));
-        if ($song_timetype == '0'){
-		$oa_datetime = date("d.m.y H:i:s", $oa_songtime);
-		}
-		else if ($song_timetype == '1') {
-		$oa_datetime = date("j-n-Y h:i:s a", $oa_songtime);
-		}
-		
 		echo "</td>
 		<td class='odd'>$oa_songsong&nbsp;</td>
-		<td class='odd'>$oa_datetime&nbsp;</td>
+		<td class='odd'>$oa_songtime&nbsp;</td>
 		<td class='odd'><a href='songs.php?op=SongEdit&amp;oa_songid=$oa_songid'>"._AM_ONAIR_EDIT."</a></td>
 		<td class='odd'><a href='songs.php?op=SongDel&amp;oa_songid=$oa_songid'>"._AM_ONAIR_DEL."</a></td>
         </tr>";
@@ -195,7 +188,7 @@ function onair_SongShow() {
 	switch($op) {
         case "SongSave":
                 onair_SongSave();
-                break;
+				break;
         case "SongEdit":
                 xoops_cp_header();
 				onair_SongEdit($_GET["oa_songid"]);
@@ -205,7 +198,7 @@ function onair_SongShow() {
                 onair_SongDel();
                 break;
         case "Songlistshow":
-                onair_SongShow();
+				onair_SongShow();
                 break;        
 		case "Song":
 				xoops_cp_header();
@@ -214,7 +207,7 @@ function onair_SongShow() {
 				break;		
 case "Songchoice": 
 default:
-                onair_SongChoice();
+			   onair_SongChoice();
                 break;						
 } 
 	 ?>

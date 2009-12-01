@@ -25,10 +25,9 @@ if (isset($_GET['plext']) && $_GET['plext'] == 'info') {
         $plext = 'info';
 		}
 
-$pl_id=intval($pl_id);
 switch($plext) {
         case "info":
-                onair_PlaylistById($_GET["pl_id"]);
+                onair_PlaylistById(intval($_GET["pl_id"]));
                 break;
 }
 include XOOPS_ROOT_PATH.'/footer.php';

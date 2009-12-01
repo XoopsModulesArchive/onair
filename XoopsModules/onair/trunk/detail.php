@@ -25,10 +25,9 @@ if (isset($_GET['ext']) && $_GET['ext'] == 'info') {
         $ext = 'info';
 		}
 
-$oa_id=intval($oa_id);
 switch($ext) {
         case "info":
-                onair_ShowExtInfo($_GET["oa_id"]);
+                onair_ShowExtInfo(intval($_GET["oa_id"]));
                 break;
 }
 $xoopsTpl->assign('lang_sundayname', _MD_ONAIR_SUNDAYNAME);
