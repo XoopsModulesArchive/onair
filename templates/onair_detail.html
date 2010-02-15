@@ -1,0 +1,27 @@
+<{section name=i loop=$info}>
+<table cellpadding="0" cellspacing="0" border="0">
+  <tr>
+	<th><a href="<{$xoops_url}>/modules/onair/index.php?show=day&oa_day=0"><{$lang_sundayname}></a></th>
+    <th><a href="<{$xoops_url}>/modules/onair/index.php?show=day&oa_day=1"><{$lang_mondayname}></a></th>
+    <th><a href="<{$xoops_url}>/modules/onair/index.php?show=day&oa_day=2"><{$lang_tuedayname}></a></th>
+    <th><a href="<{$xoops_url}>/modules/onair/index.php?show=day&oa_day=3"><{$lang_weddayname}></a></th>
+    <th><a href="<{$xoops_url}>/modules/onair/index.php?show=day&oa_day=4"><{$lang_thudayname}></a></th>
+    <th><a href="<{$xoops_url}>/modules/onair/index.php?show=day&oa_day=5"><{$lang_fridayname}></a></th>
+    <th><a href="<{$xoops_url}>/modules/onair/index.php?show=day&oa_day=6"><{$lang_satdayname}></a></th>
+  </tr>
+</table><table>
+     
+      <tr>
+        <td class="even"><br><center>
+        <h1><b><{$info[i].oa_title}></b></h1><h3><{$info[i].oa_with}></h3><h2><{$info[i].oa_name}></h2></center></td>
+  </tr>
+      <tr>
+        <td><span class="odd" style="float:right;width:25%;padding:8px;border:1px solid black;font-size:.8em;margin:20px;" align="center"><br><{$info[i].oa_day}><br><{$info[i].oa_start}> - <{$info[i].oa_stop}><br><br></span>
+<br><span style="float:left;
+			margin:5px;
+			padding:5px;"><{$info[i].oa_image}></span><span><{$info[i].oa_description}></span></td>
+      </tr>
+
+</table>
+
+<{/section}>
