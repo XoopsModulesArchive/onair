@@ -46,3 +46,8 @@ Version 1.04
 
 - Corrected an error in block template where the container div was not closed
 - Added in languagefiles main 2 additions that was left out
+
+22 february 2010
+---------------
+
+- Added Spanish translations to onair 1.04. Thanks to oswaldo
