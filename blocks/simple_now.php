@@ -26,12 +26,14 @@
  */ 
 function b_Onair_Show() { 
 	include_once XOOPS_ROOT_PATH.'/modules/onair/include/functions.php';
-	global $xoopsDB,$xoopsModuleConfig, $XoopsConfig; 
-
+	global $xoopsDB,$xoopsModuleConfig, $XoopsConfig,$xoTheme,$xoopsLogger; 
+	//$xoopsLogger->activated = false;
 		// Language files used to translate content when called externaly by jquery
 		
 	$oa_lng = onair_GetModuleOption('language');
 	if (!defined('_MB_ONAIR_COMINGUP')) { 
+      
+    
 	if ( file_exists(XOOPS_ROOT_PATH.'/modules/onair/language/'.$oa_lng.'/blocks.php') ) {
 	include(XOOPS_ROOT_PATH.'/modules/onair/language/'.$oa_lng.'/blocks.php');
 	}
@@ -56,7 +58,6 @@ function b_Onair_Show() {
 	else if ($timetype=='0'){$nowtime =date('H:i:s');}
 	$block = array(); 
 	$myts =& MyTextSanitizer::getInstance();
-
 	// Get data according to current time
 	$sql = "SELECT * FROM  ".$xoopsDB->prefix("oa_program")." WHERE ('$nowtime' BETWEEN oa_start AND oa_stop) AND '$nowday' = oa_day ORDER BY oa_day,oa_start LIMIT 1";
 	$result=$xoopsDB->queryF($sql);
@@ -102,8 +103,16 @@ function b_Onair_Show() {
 	$nowday2 = $nowday + $dayoffset;
 	}
 	// Get data according to upcomming event
-	$sqlnext = "SELECT * FROM  ".$xoopsDB->prefix("oa_program")." WHERE '$nextstop' <= oa_start AND '$nowday2' = oa_day order by oa_start, oa_stop LIMIT 1";
+	$sqlnext2 = "SELECT * FROM  ".$xoopsDB->prefix("oa_program")." WHERE '$nextstop' >= oa_start AND '$nowday2' = oa_day order by oa_start, oa_stop LIMIT 1";
+	$resultnext2=$xoopsDB->getRowsNum($sqlnext2);
+		if ($resultnext2 < 1 && $nowday == 6) {
+		$sqlnext = "SELECT * FROM  ".$xoopsDB->prefix("oa_program")." WHERE '$nextstop' >= oa_start AND '0' = oa_day order by oa_start, oa_stop LIMIT 1";
 	$resultnext=$xoopsDB->queryF($sqlnext);
+		}
+		if ($resultnext2 < 1 && $nowday <= 5){
+		$sqlnext = "SELECT * FROM  ".$xoopsDB->prefix("oa_program")." WHERE '$nextstop' >= oa_start AND '$nowday'+1 = oa_day order by oa_start, oa_stop LIMIT 1";
+	$resultnext=$xoopsDB->queryF($sqlnext);
+		}
 	if ( $resultnext < 1) {
 	$nowday2 = date("w", strtotime($nowday. " +1 days"));
 	$sqlnext2 = "SELECT * FROM  ".$xoopsDB->prefix("oa_program")." WHERE '$nowday2' = oa_day order by oa_start, oa_stop LIMIT 1";
