@@ -79,10 +79,12 @@ function b_Onair_Show() {
 	$message['start'] = date('h:i:s a', strtotime($myrow['oa_start'])); 
 	$message['stop'] =  date('h:i:s a', strtotime($myrow['oa_stop']));
 	$nextstop =  date('h:i:s a', strtotime($myrow['oa_stop']));
+	$nextbeginabsolute = "12:00:00 am";
 		} else if ($timetype=='0'){
 	$message['start'] = date('H:i:s', strtotime($myrow['oa_start'])); 
 	$message['stop'] =  date('H:i:s', strtotime($myrow['oa_stop']));
 	$nextstop =  date('H:i:s', strtotime($myrow['oa_stop']));
+	$nextbeginabsolute = "00:00:00";
 		}
 	$title = $myts->stripSlashesGPC($myrow["oa_title"]);
 	$message['title'] = $title;
@@ -110,7 +112,7 @@ function b_Onair_Show() {
 	$resultnext=$xoopsDB->queryF($sqlnext);
 		}
 		if ($resultnext2 < 1 && $nowday <= 5){
-		$sqlnext = "SELECT * FROM  ".$xoopsDB->prefix("oa_program")." WHERE '$nextstop' <= oa_start AND '$nowday' = oa_day order by oa_start, oa_stop LIMIT 1";
+		$sqlnext = "SELECT * FROM  ".$xoopsDB->prefix("oa_program")." WHERE '$nextbeginabsolute' <= oa_start AND '$nowday'+1 = oa_day order by oa_start, oa_stop LIMIT 1";
 	$resultnext=$xoopsDB->queryF($sqlnext);
 		}
 	if ( $resultnext < 1) {
