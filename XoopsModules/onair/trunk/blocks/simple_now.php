@@ -103,14 +103,14 @@ function b_Onair_Show() {
 	$nowday2 = $nowday + $dayoffset;
 	}
 	// Get data according to upcomming event
-	$sqlnext2 = "SELECT * FROM  ".$xoopsDB->prefix("oa_program")." WHERE '$nextstop' >= oa_start AND '$nowday2' = oa_day order by oa_start, oa_stop LIMIT 1";
+	$sqlnext2 = "SELECT * FROM  ".$xoopsDB->prefix("oa_program")." WHERE '$nextstop' >= oa_start AND '$nowday' = oa_day order by oa_start, oa_stop LIMIT 1";
 	$resultnext2=$xoopsDB->getRowsNum($sqlnext2);
 		if ($resultnext2 < 1 && $nowday == 6) {
 		$sqlnext = "SELECT * FROM  ".$xoopsDB->prefix("oa_program")." WHERE '$nextstop' >= oa_start AND '0' = oa_day order by oa_start, oa_stop LIMIT 1";
 	$resultnext=$xoopsDB->queryF($sqlnext);
 		}
 		if ($resultnext2 < 1 && $nowday <= 5){
-		$sqlnext = "SELECT * FROM  ".$xoopsDB->prefix("oa_program")." WHERE '$nextstop' >= oa_start AND '$nowday'+1 = oa_day order by oa_start, oa_stop LIMIT 1";
+		$sqlnext = "SELECT * FROM  ".$xoopsDB->prefix("oa_program")." WHERE '$nextstop' <= oa_start AND '$nowday' = oa_day order by oa_start, oa_stop LIMIT 1";
 	$resultnext=$xoopsDB->queryF($sqlnext);
 		}
 	if ( $resultnext < 1) {
