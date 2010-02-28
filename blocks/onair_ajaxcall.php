@@ -13,7 +13,7 @@
  * @copyright   The XOOPS Project http://sourceforge.net/projects/xoops/
  * @license       http://www.fsf.org/copyleft/gpl.html GNU public license
  * @author       Michael Albertsen (culex) <http://www.culex.dk>
- * @version      $Id:simple_now.php 2009-08-31 15:38 culex $
+ * @version      $Id:simple_now.php 2009-06-19 13:29 culex $
  * @since         File available since Release 1.0.0
  */
 
@@ -24,24 +24,18 @@
  * @param   integer     $repeat 1
  * @return  Status
  */ 
-function b_Onair_Show() { 
+function b_Onair_ajaxcall() { 
 	include_once XOOPS_ROOT_PATH.'/modules/onair/include/functions.php';
-	global $xoopsDB,$xoopsModuleConfig, $XoopsConfig,$xoTheme,$xoopsLogger; 
+	global $xoopsDB,$xoopsModuleConfig, $XoopsConfig,$xoopsTpl,$xoopsLogger;  
 	//$xoopsLogger->activated = false;
-		// Language files used to translate content when called externaly by jquery
-		
 	$oa_lng = onair_GetModuleOption('language');
-	if (!defined('_MB_ONAIR_COMINGUP')) { 
-      
-    
 	if ( file_exists(XOOPS_ROOT_PATH.'/modules/onair/language/'.$oa_lng.'/blocks.php') ) {
 	include(XOOPS_ROOT_PATH.'/modules/onair/language/'.$oa_lng.'/blocks.php');
 	}
 	else {
 	include(XOOPS_ROOT_PATH.'/modules/onair/language/english/blocks.php');
 	}
-	} 
-	// Get date now
+	// Get data now
 	$nowday=date('w');
 	// Set absolute maximum time of the day
 	$nextstop="23:59:59";
@@ -58,6 +52,7 @@ function b_Onair_Show() {
 	else if ($timetype=='0'){$nowtime =date('H:i:s');}
 	$block = array(); 
 	$myts =& MyTextSanitizer::getInstance();
+
 	// Get data according to current time
 	$sql = "SELECT * FROM  ".$xoopsDB->prefix("oa_program")." WHERE ('$nowtime' BETWEEN oa_start AND oa_stop) AND '$nowday' = oa_day ORDER BY oa_day,oa_start LIMIT 1";
 	$result=$xoopsDB->queryF($sql);
@@ -68,7 +63,6 @@ function b_Onair_Show() {
 	}
 	while($myrow=$xoopsDB->fetchArray($result))
 	{ 
-	if ($myrow['oa_stop'] < $myrow['oa_start']){$myrow['oa_stop']= '23:59:59';}
 	$limiter = $myrow['oa_stop'];
 	$message = array(); 
 	$oa_pluginname = $myrow['oa_plugin'];
@@ -106,47 +100,16 @@ function b_Onair_Show() {
 	$sqlnext2 = "SELECT * FROM  ".$xoopsDB->prefix("oa_program")." WHERE '$nextstop' >= oa_start AND '$nowday' = oa_day order by oa_start, oa_stop LIMIT 1";
 	$resultnext2=$xoopsDB->getRowsNum($sqlnext2);
 		if ($resultnext2 < 1 && $nowday == 6) {
-		$sqlnext = "SELECT * FROM  ".$xoopsDB->prefix("oa_program")." WHERE '$nextstop' >= oa_start AND '0' = oa_day order by oa_start, oa_stop LIMIT 1";
+		$sqlnext = "SELECT * FROM  ".$xoopsDB->prefix("oa_program")." WHERE '0' = oa_day order by oa_start, oa_stop LIMIT 1";
 	$resultnext=$xoopsDB->queryF($sqlnext);
 		}
 		if ($resultnext2 < 1 && $nowday <= 5){
 		$sqlnext = "SELECT * FROM  ".$xoopsDB->prefix("oa_program")." WHERE '$nextstop' <= oa_start AND '$nowday' = oa_day order by oa_start, oa_stop LIMIT 1";
 	$resultnext=$xoopsDB->queryF($sqlnext);
 		}
-	if ( $resultnext < 1) {
-	$nowday2 = date("w", strtotime($nowday. " +1 days"));
-	$sqlnext2 = "SELECT * FROM  ".$xoopsDB->prefix("oa_program")." WHERE '$nowday2' = oa_day order by oa_start, oa_stop LIMIT 1";
-	$resultnext2=$xoopsDB->queryF($sqlnext2);
-	while($myrownext=$xoopsDB->fetchArray($resultnext2))
-	{ 
-	$messagenext = array(); 
-	$messagenext['id'] = $myrownext['oa_id']; 
-	$messagenext['day'] = onair_Numbers2DaysBlock($myrownext['oa_day']); 
-	if ($timetype=='1'){
-	$messagenext['start'] = date('h:i:s a', strtotime($myrownext['oa_start'])); 
-	$messagenext['stop'] =  date('h:i:s a', strtotime($myrownext['oa_stop']));
-		} else {
-	$messagenext['start'] = date('H:i:s', strtotime($myrownext['oa_start'])); 
-	$messagenext['stop'] =  date('H:i:s', strtotime($myrownext['oa_stop']));
-		}
-	$titlenext = $myts->stripSlashesGPC($myrownext["oa_title"]);
-	$messagenext['title'] = $titlenext;
-	$stationnext = $myts->stripSlashesGPC($myrownext["oa_station"]);
-	$messagenext['station'] = $stationnext;
-	$namenext = $myts->stripSlashesGPC($myrownext["oa_name"]);
-	$messagenext['name'] = $namenext;
-	$descriptionnext = $myts->stripSlashesGPC($myrownext["oa_description"]);
-	$messagenext['description'] = $descriptionnext;	
-
-	$imagenext = $myts->stripSlashesGPC($myrownext["oa_image"]);
-	$messagenext['image'] = "<img src='".XOOPS_URL."/".$oa_imagedir.$imagenext."' height='".$oa_shothigh."' width='".$oa_shotwide."' alt='"._VISITWEBSITE."' /></img>";
-	$messagenext['comup'] = _MB_ONAIR_COMINGUP;
-	$block['onair2'][] = $messagenext; 
-	}
-	}
 		if ( $resultnext ){ 
 
-	while($myrownext=$xoopsDB->fetchArray($resultnext))
+while($myrownext=$xoopsDB->fetchArray($resultnext))
 	{ 
 	$messagenext = array(); 
 	$messagenext['id'] = $myrownext['oa_id']; 
@@ -171,12 +134,14 @@ function b_Onair_Show() {
 	$messagenext['image'] = "<img src='".XOOPS_URL."/".$oa_imagedir.$imagenext."' height='".$oa_shothigh."' width='".$oa_shotwide."' alt='"._VISITWEBSITE."' /></img>";
 	$messagenext['comup'] = _MB_ONAIR_COMINGUP;
 	$block['onair2'][] = $messagenext; 
-
 	}
 	}else{ 
 		echo mysql_error(); 
 		return false; 
 	} 
 	return $block; 
+	unset($block);
 	}
+	
+
 ?>
