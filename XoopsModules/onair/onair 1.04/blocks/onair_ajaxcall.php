@@ -102,8 +102,12 @@ function b_Onair_ajaxcall() {
 	$sqlnext2 = "SELECT * FROM  ".$xoopsDB->prefix("oa_program")." WHERE '$nextstop' >= oa_start AND '$nowday' = oa_day order by oa_start, oa_stop LIMIT 1";
 	$resultnext2=$xoopsDB->getRowsNum($sqlnext2);
 		if ($resultnext2 < 1 && $nowday == 6) {
-		$sqlnext = "SELECT * FROM  ".$xoopsDB->prefix("oa_program")." WHERE '0' = oa_day order by oa_start, oa_stop LIMIT 1";
-	$resultnext=$xoopsDB->queryF($sqlnext);
+			$sqlnext = "SELECT * FROM  ".$xoopsDB->prefix("oa_program")." WHERE '$nextstop' <= oa_start AND '$nowday' = oa_day order by oa_start, oa_stop LIMIT 1";
+			$resultnext=$xoopsDB->queryF($sqlnext);
+			if ($resultnext < 1) {
+			$sqlnext = "SELECT * FROM  ".$xoopsDB->prefix("oa_program")." WHERE '$nextbeginabsolute' <= oa_start AND '$nowday'+1 = oa_day order by oa_start, oa_stop LIMIT 1";
+			$resultnext=$xoopsDB->queryF($sqlnext);
+			}
 		}
 		if ($resultnext2 < 1 && $nowday <= 5){
 		$sqlnext = "SELECT * FROM  ".$xoopsDB->prefix("oa_program")." WHERE '$nextbeginabsolute' <= oa_start AND '$nowday'+1 = oa_day order by oa_start, oa_stop LIMIT 1";
