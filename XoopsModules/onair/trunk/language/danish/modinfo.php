@@ -12,7 +12,8 @@ define("_MI_ONAIR_MODULE_DESC","Opsæt dit on-air script med dette modul for at 
 
 define("_MI_ONAIR_PLAYLISTMENU", "Se playlister");
 define("_MI_ONAIR_TIMETYPE","Tidstype - 12 timers ? (nej = 24 timers)");
-define("_MI_ONAIR_TIMEZONE","Vælg din tidszone default er +0");
+define("_MI_ONAIR_TIMEZONE","Skriv tidzone");
+define("_MI_ONAIR_TIMEZONEDESC","Vælg tidzone default er Europe/Copenhagen<br/><br/><a href='http://us2.php.net/manual/en/timezones.php' target='_blank'>Se her for alternative indstillinger</a>");
 define("_MI_ONAIR_MAXFILESIZE","Max. størrelse på uploaded fil i bytes");
 define("_MI_ONAIR_SHOTDIR","Hvor skal thumb placeres");
 define("_MI_ONAIR_IMGDIR","Hvor er billeder placeret");

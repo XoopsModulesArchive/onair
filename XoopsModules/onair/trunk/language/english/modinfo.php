@@ -9,7 +9,8 @@ define("_MI_ONAIR_MODULE_DESC","Set up your on-air script with this module to di
 //%%%%%%	Configs		%%%%%
 define("_MI_ONAIR_PLAYLISTMENU", "See playlists");
 define("_MI_ONAIR_TIMETYPE","Time type - use 12 hours ? (no = 24 hours)");
-define("_MI_ONAIR_TIMEZONE","Choose timezone default is +0");
+define("_MI_ONAIR_TIMEZONE","Write time zone");
+define("_MI_ONAIR_TIMEZONEDESC","Choose timezone default Europe/Copenhagen<br/><br/><a href='http://us2.php.net/manual/en/timezones.php' target='_blank'>See here for alternative settings</a>");
 define("_MI_ONAIR_MAXFILESIZE","Max. size of oploaded file in bytes");
 define("_MI_ONAIR_SHOTDIR","Where is shots placed");
 define("_MI_ONAIR_IMGDIR","Where are images placed");

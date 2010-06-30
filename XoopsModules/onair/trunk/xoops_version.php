@@ -78,6 +78,15 @@ $modversion['config'][] = array(
 	'formtype' 		=> 'yesno',
 	'valuetype' 	=> 'int',
 	'default' 		=> 0);
+	
+$modversion['config'][] = array(
+	'name' 			=> 'onair_timezone',
+	'title' 		=> '_MI_ONAIR_TIMEZONE',
+	'description' 	=> '_MI_ONAIR_TIMEZONEDESC',
+	'formtype' 		=> 'textbox',
+	'valuetype' 	=> 'text',
+	'default' 		=> 'Europe/Copenhagen');
+	
 /*
 $modversion['config'][] = array(
 	// XoopsFormSelectTimezone($caption, $name, $value=null, $size=1)

@@ -27,9 +27,9 @@
 function b_Onair_Show() { 
 	include_once XOOPS_ROOT_PATH.'/modules/onair/include/functions.php';
 	global $xoopsDB,$xoopsModuleConfig, $XoopsConfig,$xoTheme,$xoopsLogger; 
-	//$xoopsLogger->activated = false;
+	$xoopsLogger->activated = false;
 		// Language files used to translate content when called externaly by jquery
-		
+	date_default_timezone_set(''.onair_GetModuleOption('onair_timezone').'');	
 	$oa_lng = onair_GetModuleOption('language');
 	if (!defined('_MB_ONAIR_COMINGUP')) { 
       
