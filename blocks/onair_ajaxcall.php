@@ -27,7 +27,8 @@
 function b_Onair_ajaxcall() { 
 	include_once XOOPS_ROOT_PATH.'/modules/onair/include/functions.php';
 	global $xoopsDB,$xoopsModuleConfig, $XoopsConfig,$xoopsTpl,$xoopsLogger;  
-	//$xoopsLogger->activated = false;
+	$xoopsLogger->activated = false;
+	date_default_timezone_set(''.onair_GetModuleOption('onair_timezone').'');	
 	$oa_lng = onair_GetModuleOption('language');
 	if ( file_exists(XOOPS_ROOT_PATH.'/modules/onair/language/'.$oa_lng.'/blocks.php') ) {
 	include(XOOPS_ROOT_PATH.'/modules/onair/language/'.$oa_lng.'/blocks.php');
