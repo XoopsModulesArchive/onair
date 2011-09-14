@@ -11,7 +11,7 @@ oa_description text NOT NULL,
 oa_plugin varchar(50) NOT NULL default '',
 oa_stream varchar(75) NOT NULL default '',
 PRIMARY KEY (oa_id)
-) TYPE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
 
 CREATE TABLE oa_playlist (
 pl_id int(5) unsigned NOT NULL auto_increment,
@@ -25,7 +25,7 @@ pl_description text NOT NULL,
 pl_name text NOT NULL,
 pl_date DATE NOT NULL,
 PRIMARY KEY (pl_id)
-) TYPE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 
 CREATE TABLE oa_hitlist (
