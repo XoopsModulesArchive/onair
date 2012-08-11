@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 //%%%%%%	Config etc	%%%%%
 define("_AM_ONAIR_CONFIG","Configurar");
 define("_AM_ONAIR_EDIT","Editar");
@@ -44,11 +44,11 @@ $oa_days = array(
 //%%%%%%	Images etc	%%%%%
 define("_AM_IMAGEUPLOAD_","Subir nueva imagen");
 define("_AM_SELECT_IMAGE","Selecciona una imagen");
-define ("_AM_ONAIR_PROGRAM_EDIT","Editar evento");
-define ("_AM_ONAIR_ADDNEW","Agregar nuevo evento");
-define ("_AM_ONAIR_UPLOADSUCCESS","<h4>Archivo subido con éxito!</h4>");
-define ("AM_ONAIR_SAVEDAS","Guardado como: ");
-define ("_AM_ONAIR_FULLPATH","Ruta completa: ");
+define("_AM_ONAIR_PROGRAM_EDIT","Editar evento");
+define("_AM_ONAIR_ADDNEW","Agregar nuevo evento");
+define("_AM_ONAIR_UPLOADSUCCESS","<h4>Archivo subido con éxito!</h4>");
+define("AM_ONAIR_SAVEDAS","Guardado como: ");
+define("_AM_ONAIR_FULLPATH","Ruta completa: ");
 define("_AM_ONAIR_ADDIMAGE","Subir imagen nueva");
 define("_AM_ONAIR_GOING2UPLOADFORM","Obteniendo formulario de subida <br> Espere....");
 

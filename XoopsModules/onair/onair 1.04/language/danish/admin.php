@@ -25,7 +25,7 @@ define("_AM_ONAIR_EDITENTRY","ret denne begivenhed");
 define("_AM_ONAIR_EVENTAPPROVE","Emne er godkendt");
 define("_AM_ONAIR_ENTRY","Lav nyt emne");
 define("_AM_ONAIR_NODESCRIPTION","Ingen beskrivelse af dette program.");
-define ("_AM_ONAIR_PROGRAM_EDIT","Ret program");
+define("_AM_ONAIR_PROGRAM_EDIT","Ret program");
 
 //added 1.04
 define("_AM_ONAIR_SONGSHOWALL", "Vis alle sange");
@@ -57,10 +57,10 @@ $oa_days = array(
 
 define("_AM_IMAGEUPLOAD_","opload nyt billede");
 define("_AM_SELECT_IMAGE","Vælg billede");
-define ("_AM_ONAIR_ADDNEW","Tilføj nyt program");
-define ("_AM_ONAIR_UPLOADSUCCESS","<h4>Fil oploadet OK!</h4>");
-define ("AM_ONAIR_SAVEDAS","Gemt som: ");
-define ("_AM_ONAIR_FULLPATH","Fuld sti: ");
+define("_AM_ONAIR_ADDNEW","Tilføj nyt program");
+define("_AM_ONAIR_UPLOADSUCCESS","<h4>Fil oploadet OK!</h4>");
+define("AM_ONAIR_SAVEDAS","Gemt som: ");
+define("_AM_ONAIR_FULLPATH","Fuld sti: ");
 define("_AM_ONAIR_ADDIMAGE","Opload nyt billede");
 define("_AM_ONAIR_GOING2UPLOADFORM","Henter Oploadform <br> Vent venligst....");
 

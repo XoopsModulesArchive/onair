@@ -54,11 +54,11 @@ $oa_days = array(
 //%%%%%%	Images etc	%%%%%
 define("_AM_IMAGEUPLOAD_","Upload new image");
 define("_AM_SELECT_IMAGE","Select picture");
-define ("_AM_ONAIR_PROGRAM_EDIT","Edit event");
-define ("_AM_ONAIR_ADDNEW","Add new event");
-define ("_AM_ONAIR_UPLOADSUCCESS","<h4>File uploaded successfully!</h4>");
-define ("AM_ONAIR_SAVEDAS","Saved as: ");
-define ("_AM_ONAIR_FULLPATH","Full path: ");
+define("_AM_ONAIR_PROGRAM_EDIT","Edit event");
+define("_AM_ONAIR_ADDNEW","Add new event");
+define("_AM_ONAIR_UPLOADSUCCESS","<h4>File uploaded successfully!</h4>");
+define("AM_ONAIR_SAVEDAS","Saved as: ");
+define("_AM_ONAIR_FULLPATH","Full path: ");
 define("_AM_ONAIR_ADDIMAGE","Opload New Image");
 define("_AM_ONAIR_GOING2UPLOADFORM","Getting Uploadform <br> Please Wait....");
 

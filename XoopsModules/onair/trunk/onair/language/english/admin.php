@@ -36,8 +36,8 @@ define("_AM_ONAIR_SONGTITLE","Song title");
 define("_AM_ONAIR_SONGDATETIME","Date/time played");
 
 //Added 1.05
-define ("_AM_ONAIR_UPLOADSONGS","Upload song data");
-define ("_AM_ONAIR_UPLOADSONGSDESC","Choose here the format of your player log file. (DireTTore or Playtime_Winamp_Plugin).<br /><br />Check the content the file if you need to make a custom file.<br><br>The songs will then be put each and independently into a table with date, start time, week number, Artist - title, and year, and will be used to make a chart / Hitlist of your most played music.<br>");
+define("_AM_ONAIR_UPLOADSONGS","Upload song data");
+define("_AM_ONAIR_UPLOADSONGSDESC","Choose here the format of your player log file. (DireTTore or Playtime_Winamp_Plugin).<br /><br />Check the content the file if you need to make a custom file.<br><br>The songs will then be put each and independently into a table with date, start time, week number, Artist - title, and year, and will be used to make a chart / Hitlist of your most played music.<br>");
 
 //%%%%%%	Days	%%%%%
 define("_AM_ONAIR_SUNDAYNAME","Sunday");
@@ -57,11 +57,11 @@ $oa_days = array(
 //%%%%%%	Images etc	%%%%%
 define("_AM_IMAGEUPLOAD_","Upload new image");
 define("_AM_SELECT_IMAGE","Select picture");
-define ("_AM_ONAIR_PROGRAM_EDIT","Edit event");
-define ("_AM_ONAIR_ADDNEW","Add new event");
-define ("_AM_ONAIR_UPLOADSUCCESS","<h4>File uploaded successfully!</h4>");
-define ("AM_ONAIR_SAVEDAS","Saved as: ");
-define ("_AM_ONAIR_FULLPATH","Full path: ");
+define("_AM_ONAIR_PROGRAM_EDIT","Edit event");
+define("_AM_ONAIR_ADDNEW","Add new event");
+define("_AM_ONAIR_UPLOADSUCCESS","<h4>File uploaded successfully!</h4>");
+define("AM_ONAIR_SAVEDAS","Saved as: ");
+define("_AM_ONAIR_FULLPATH","Full path: ");
 define("_AM_ONAIR_ADDIMAGE","Opload New Image");
 define("_AM_ONAIR_GOING2UPLOADFORM","Getting Uploadform <br> Please Wait....");
 
