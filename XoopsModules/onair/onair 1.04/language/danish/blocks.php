@@ -1,7 +1,7 @@
 <?php
-define('_MB_ONAIR_COMINGUP', 'Næste program..');
-define('_MB_ONAIR_NOWPLAYING', 'Lige nu: ');
-define('_MB_ONAIR_HOST', 'Vært: ');
+define('_MB_ONAIR_COMINGUP','Næste program..');
+define('_MB_ONAIR_NOWPLAYING','Lige nu: ');
+define('_MB_ONAIR_HOST','Vært: ');
 
 // Days and time
 

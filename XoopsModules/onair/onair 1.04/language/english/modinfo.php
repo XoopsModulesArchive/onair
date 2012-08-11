@@ -7,7 +7,7 @@ define("_MI_ONAIR_HELP","Help");
 define("_MI_ONAIR_MODULE_DESC","Set up your on-air script with this module to display who is on now with time, station picture etc");
 
 //%%%%%%	Configs		%%%%%
-define("_MI_ONAIR_PLAYLISTMENU", "See playlists");
+define("_MI_ONAIR_PLAYLISTMENU","See playlists");
 define("_MI_ONAIR_TIMETYPE","Time type - use 12 hours ? (no = 24 hours)");
 define("_MI_ONAIR_TIMEZONE","Choose timezone default is +0");
 define("_MI_ONAIR_MAXFILESIZE","Max. size of oploaded file in bytes");

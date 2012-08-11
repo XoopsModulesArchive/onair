@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 //%%%%%%	Names, titles	%%%%%
 define("_MI_ONAIR_MODULE_NAME","En el Aire rotador");
 define("_MI_ONAIR_HELP","Ayuda");
@@ -7,7 +7,7 @@ define("_MI_ONAIR_HELP","Ayuda");
 define("_MI_ONAIR_MODULE_DESC","Establecer el scrip on-air con este módulo para mostrar quien está de Turno con tiempo, estación, foto etc");
 
 //%%%%%%	Configs		%%%%%
-define("_MI_ONAIR_PLAYLISTMENU", "Ver las listas de reproducción");
+define("_MI_ONAIR_PLAYLISTMENU","Ver las listas de reproducción");
 define("_MI_ONAIR_TIMETYPE","Tipo de Tiempo - usar 12 horas ? (no = 24 horas)");
 define("_MI_ONAIR_TIMEZONE","Elija la zona horaria, predeterminada es -6");
 define("_MI_ONAIR_MAXFILESIZE","Max. tamaño del archivo cargado en bytes");

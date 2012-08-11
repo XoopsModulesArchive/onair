@@ -28,7 +28,7 @@ define("_AM_ONAIR_NODESCRIPTION","Ingen beskrivelse af dette program.");
 define("_AM_ONAIR_PROGRAM_EDIT","Ret program");
 
 //added 1.04
-define("_AM_ONAIR_SONGSHOWALL", "Vis alle sange");
+define("_AM_ONAIR_SONGSHOWALL","Vis alle sange");
 define("_AM_ONAIR_SONGDEL","Sangen er slettet");
 define("_AM_ONAIR_SONGMOD","Song er rettet");
 define("_AM_ONAIR_SONG","Kunstner - Titel");
@@ -90,11 +90,11 @@ define("_AM_ONAIR_GOING2PLAYLISTFORM","Henter Playlistform....");
 
 //%%%%%%		Messages 		%%%%%
 
-define("_AM_ONAIR_NAMEMODULE", "Onair");
-define("_AM_ONAIR_NEWEVENT", "Du har en ny event");
-define("_AM_ONAIR_THANKS", "Data er gemt!");
-define("_AM_ONAIR_NOTEXISTEVENT", "Du skal tilføje playliste udfra allerede eksisterende event!");
-define("_AM_ONAIR_SHOWPLAYLISTS", "Vis alle playlister");
-define("_AM_ONAIR_HELP", "Hjælp");
+define("_AM_ONAIR_NAMEMODULE","Onair");
+define("_AM_ONAIR_NEWEVENT","Du har en ny event");
+define("_AM_ONAIR_THANKS","Data er gemt!");
+define("_AM_ONAIR_NOTEXISTEVENT","Du skal tilføje playliste udfra allerede eksisterende event!");
+define("_AM_ONAIR_SHOWPLAYLISTS","Vis alle playlister");
+define("_AM_ONAIR_HELP","Hjælp");
 
 ?>

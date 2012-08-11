@@ -10,7 +10,7 @@ define("_MI_ONAIR_MODULE_DESC","Opsæt dit on-air script med dette modul for at 
 
 //%%%%%%	Configs	%%%%%
 
-define("_MI_ONAIR_PLAYLISTMENU", "Se playlister");
+define("_MI_ONAIR_PLAYLISTMENU","Se playlister");
 define("_MI_ONAIR_TIMETYPE","Tidstype - 12 timers ? (nej = 24 timers)");
 define("_MI_ONAIR_TIMEZONE","Vælg din tidszone default er +0");
 define("_MI_ONAIR_MAXFILESIZE","Max. størrelse på uploaded fil i bytes");

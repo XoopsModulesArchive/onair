@@ -1,7 +1,7 @@
-﻿<?php
-define('_MB_ONAIR_COMINGUP', 'Proximamente..');
-define('_MB_ONAIR_NOWPLAYING', 'Ahora tocando: ');
-define('_MB_ONAIR_HOST', 'Locutor: ');
+<?php
+define('_MB_ONAIR_COMINGUP','Proximamente..');
+define('_MB_ONAIR_NOWPLAYING','Ahora tocando: ');
+define('_MB_ONAIR_HOST','Locutor: ');
 
 // Days and time
 

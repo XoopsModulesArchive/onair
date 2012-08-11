@@ -1,7 +1,7 @@
 <?php
-define('_MB_ONAIR_COMINGUP', 'Coming up..');
-define('_MB_ONAIR_NOWPLAYING', 'Now playing: ');
-define('_MB_ONAIR_HOST', 'Host: ');
+define('_MB_ONAIR_COMINGUP','Coming up..');
+define('_MB_ONAIR_NOWPLAYING','Now playing: ');
+define('_MB_ONAIR_HOST','Host: ');
 
 // Days and time
 

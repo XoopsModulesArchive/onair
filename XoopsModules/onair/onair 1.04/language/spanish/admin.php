@@ -73,10 +73,10 @@ define("_AM_ONAIR_PL","A partir de estos datos");
 define("_AM_ONAIR_ADDPLAYLIST","Crear nueva lista de reproducción");
 define("_AM_ONAIR_GOING2PLAYLISTFORM","Obteniendo el formulario de lista de reproducción....");
 
-define("_AM_ONAIR_NAMEMODULE", "En el Aire");
-define("_AM_ONAIR_NEWEVENT", "Tiene un nuevo evento");
-define("_AM_ONAIR_THANKS", "¡Los datos se guardaron en la base de datos!");
-define("_AM_ONAIR_NOTEXISTEVENT", "¡Debe adjuntar la lista de reproduccion a eventos existentes!");
-define("_AM_ONAIR_SHOWPLAYLISTS", "Mostrar todas las listas de reproducción");
-define("_AM_ONAIR_HELP", "Ayuda");
+define("_AM_ONAIR_NAMEMODULE","En el Aire");
+define("_AM_ONAIR_NEWEVENT","Tiene un nuevo evento");
+define("_AM_ONAIR_THANKS","¡Los datos se guardaron en la base de datos!");
+define("_AM_ONAIR_NOTEXISTEVENT","¡Debe adjuntar la lista de reproduccion a eventos existentes!");
+define("_AM_ONAIR_SHOWPLAYLISTS","Mostrar todas las listas de reproducción");
+define("_AM_ONAIR_HELP","Ayuda");
 ?>
