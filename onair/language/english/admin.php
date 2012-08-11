@@ -27,7 +27,7 @@ define("_AM_ONAIR_ENTRY","Enter new event");
 define("_AM_ONAIR_NODESCRIPTION","No description for this event.");
 
 //added 1.04
-define("_AM_ONAIR_SONGSHOWALL", "Show all songs");
+define("_AM_ONAIR_SONGSHOWALL","Show all songs");
 define("_AM_ONAIR_SONGDEL","Song is deleted");
 define("_AM_ONAIR_SONGMOD","Song has been modified");
 define("_AM_ONAIR_SONG","Artist - Title");
@@ -86,10 +86,10 @@ define("_AM_ONAIR_PL","From these data");
 define("_AM_ONAIR_ADDPLAYLIST","Create New Playlist");
 define("_AM_ONAIR_GOING2PLAYLISTFORM","Getting Playlist Form....");
 
-define("_AM_ONAIR_NAMEMODULE", "Onair");
-define("_AM_ONAIR_NEWEVENT", "You have a new event");
-define("_AM_ONAIR_THANKS", "Data is saved to database!");
-define("_AM_ONAIR_NOTEXISTEVENT", "You must attach playlist to existing event!");
-define("_AM_ONAIR_SHOWPLAYLISTS", "Show all playlists");
-define("_AM_ONAIR_HELP", "Help");
+define("_AM_ONAIR_NAMEMODULE","Onair");
+define("_AM_ONAIR_NEWEVENT","You have a new event");
+define("_AM_ONAIR_THANKS","Data is saved to database!");
+define("_AM_ONAIR_NOTEXISTEVENT","You must attach playlist to existing event!");
+define("_AM_ONAIR_SHOWPLAYLISTS","Show all playlists");
+define("_AM_ONAIR_HELP","Help");
 ?>
