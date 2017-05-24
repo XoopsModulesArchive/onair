@@ -120,7 +120,7 @@ function onair_ChartEdit($ch_chartid) {
 	global $xoopsModuleConfig,$xoopsModule,$xoopsDB,$top_timetype,$myts;
 	include XOOPS_ROOT_PATH."/class/xoopsformloader.php";
 	$chartform = new XoopsThemeForm("Chart", "form", "chart.php?op=chart_save&amp;ch_chartid=$ch_chartid"); 
-	$myts =& MyTextSanitizer::getInstance();
+	$myts = MyTextSanitizer::getInstance();
 	$result=$xoopsDB->query("SELECT ch_chartid, ch_charttitle, ch_chartsong, ch_chartweekstotal, ch_chartlastweek, ch_charttopplace, ch_chartthisweek, ch_chartweek ,ch_chartplaytime FROM ".$xoopsDB->prefix("oa_chart")." WHERE ch_chartid=".intval($ch_chartid)." ORDER BY ch_chartthisweek LIMIT 0,20");
 	
 	list($ch_chartid, $ch_charttitle, $ch_chartsong, $ch_chartweekstotal, $ch_chartlastweek, $ch_charttopplace, $ch_chartthisweek, $ch_chartweek, $ch_chartplaytime) = $xoopsDB->fetchRow($result);
@@ -182,7 +182,7 @@ function onair_ChartShow() {
         global $xoopsDB, $myts, $top_days,$xoopsModuleConfig,$top_timetype;
         
         xoops_cp_header();
-		$myts =& MyTextSanitizer::getInstance();
+		$myts = MyTextSanitizer::getInstance();
 		$weeks = 1;
 		echo "<table border='0' width='100%' class='outer' align='center'>
         <tr><td class='even'><b><center>Week numbes.: ";
@@ -225,10 +225,10 @@ function onair_chart($ch_week) {
 	global $xoopsModuleConfig,$xoopsModule,$xoopsDB,$chart_timetype,$ch_week,$myts;
 	include XOOPS_ROOT_PATH."/class/xoopsformloader.php";
 	$chartform = new XoopsThemeForm("chart", "form", "chart.php?op=chartpost&amp;ch_chartid=$ch_chartid"); 
-	$myts =& MyTextSanitizer::getInstance();
+	$myts = MyTextSanitizer::getInstance();
 	
 	$result=$xoopsDB->query("SELECT SELECT oa_songsong, count( * ) FROM ".$xoopsDB->prefix("oa_hitlist")." WHERE oa_songweek=".intval($ch_week)." GROUP BY oa_songsong ORDER BY COUNT( * ) DESC LIMIT 0 , 20;");
-	$myts =& MyTextSanitizer::getInstance();
+	$myts = MyTextSanitizer::getInstance();
 	list($oa_songid , $oa_songsong , $oa_songtime , $oa_songday , $oa_songweek , $oa_songyear , $oa_songplaytime) = $xoopsDB->fetchRow($result);
      
 	 $id_chart_hidden = new XoopsFormHidden("oa_songid", $myts->htmlSpecialChars($myts ->stripSlashesGPC($oa_songid)));
@@ -303,7 +303,7 @@ function onair_chart($ch_week) {
 				break;		
 		case "chartpost":
 		global $myts,$xoopsDB;
-	$myts =& MyTextSanitizer::getInstance();
+	$myts = MyTextSanitizer::getInstance();
 		
 		// ch_charttitle ch_chartsong ch_chartweekstotal ch_chartlastweek ch_charttopplace ch_chartthisweek ch_chartweek ch_chartplaytime
 		

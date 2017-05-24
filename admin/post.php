@@ -21,7 +21,7 @@
         global $xoopsDB,$oa_start,$oa_stop;
 
 		$oa_timetype = onair_GetModuleOption('timetype');
-                $myts =& MyTextSanitizer::getInstance();
+                $myts = MyTextSanitizer::getInstance();
         $oa_id="";        
         $oa_day = $myts->htmlSpecialChars($_POST["oa_day"]);
 		$oa_station = $myts->htmlSpecialChars($_POST["oa_station"]);

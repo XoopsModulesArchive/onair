@@ -26,7 +26,7 @@ include '../include/functions.php';
 include '../include/classes.php';
 		
 	global $xoopsModule, $xoopsDB, $myts, $imageop, $xoopsModuleConfig;    		
-	$myts =& MyTextSanitizer::getInstance();
+	$myts = MyTextSanitizer::getInstance();
 	
 
 	$imageop = 'imageform'; 

@@ -137,7 +137,7 @@ function onair_EventSave() {
  */ 
 function onair_EventEdit($oa_id) {
         global $xoopsModule, $xoopsDB, $oa_timetype,$numbers2days;
-        $myts =& MyTextSanitizer::getInstance();
+        $myts = MyTextSanitizer::getInstance();
         $oa_id = $_GET['oa_id'];
 		xoops_cp_header();
 		$oa_start='';
@@ -253,7 +253,7 @@ function onair_EventEdit($oa_id) {
  */ 
 function onair_EventShow() {
         global $xoopsDB, $myts, $oa_days,$xoopsModuleConfig,$oa_timetype;
-        $myts =& MyTextSanitizer::getInstance();
+        $myts = MyTextSanitizer::getInstance();
         xoops_cp_header();
         echo "<table border='0' width='100%' class='outer' align='center'>
         <tr><td class='even'><b>"._AM_ONAIR_DAY."</b></td><td class='even'><b>"
@@ -332,7 +332,7 @@ function onair_AddNew() {
 			else $oa_description=_AM_ONAIR_NODESCRIPTION;
 	
   		
-        $myts =& MyTextSanitizer::getInstance();
+        $myts = MyTextSanitizer::getInstance();
 		
 		//assign variable of xoopsuser to form
        	xoops_cp_header();	

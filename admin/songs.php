@@ -109,7 +109,7 @@ function onair_SongEdit($oa_songid) {
 	global $xoopsModuleConfig,$xoopsModule,$xoopsDB,$song_timetype,$myts;
 include XOOPS_ROOT_PATH."/class/xoopsformloader.php";
 	$Songform = new XoopsThemeForm("Songform", "form", "songs.php?op=SongSave&amp;oa_songid=$oa_songid"); 
-	$myts =& MyTextSanitizer::getInstance();
+	$myts = MyTextSanitizer::getInstance();
 	$result=$xoopsDB->query("SELECT oa_songid, oa_songtime, oa_songday, oa_songweek, oa_songyear, oa_songsong FROM ".$xoopsDB->prefix("oa_hitlist")." WHERE oa_songid=".intval($oa_songid)."");
 	
 	list($oa_songid, $oa_songtime, $oa_songday,$oa_songweek,$oa_songyear,$oa_songsong) = $xoopsDB->fetchRow($result);
@@ -151,7 +151,7 @@ function onair_SongShow() {
         global $xoopsDB, $myts, $pl_days,$xoopsModuleConfig,$song_timetype;
         
         xoops_cp_header();
-		$myts =& MyTextSanitizer::getInstance();
+		$myts = MyTextSanitizer::getInstance();
         echo "<table border='0' width='100%' class='outer' align='center'>
         <tr><td class='even'><b>"._AM_ONAIR_SONGID."</b></td><td class='even'><b>"
 		._AM_ONAIR_SONGTITLE."</b></td><td colspan='2' class='even'><center><b>"

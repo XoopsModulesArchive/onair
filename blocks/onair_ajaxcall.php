@@ -52,7 +52,7 @@ function b_Onair_ajaxcall() {
 	// IF european time (24 hour)
 	else if ($timetype=='0'){$nowtime =date('H:i:s');}
 	$block = array(); 
-	$myts =& MyTextSanitizer::getInstance();
+	$myts = MyTextSanitizer::getInstance();
 
 	// Get data according to current time
 	$sql = "SELECT * FROM  ".$xoopsDB->prefix("oa_program")." WHERE ('$nowtime' BETWEEN oa_start AND oa_stop) AND '$nowday' = oa_day ORDER BY oa_day,oa_start LIMIT 1";

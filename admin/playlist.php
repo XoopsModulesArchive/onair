@@ -121,7 +121,7 @@ function onair_PlaylistEdit($pl_id) {
 	global $xoopsModuleConfig,$xoopsModule,$xoopsDB,$pl_timetype,$myts;
 include XOOPS_ROOT_PATH."/class/xoopsformloader.php";
 	$playlistform = new XoopsThemeForm("PlayList", "form", "playlist.php?op=Playlistsave&amp;pl_id=$pl_id"); 
-	$myts =& MyTextSanitizer::getInstance();
+	$myts = MyTextSanitizer::getInstance();
 	$result=$xoopsDB->query("SELECT pl_day, pl_title, pl_name, pl_start, pl_stop, pl_image, pl_date, pl_description,pl_station FROM ".$xoopsDB->prefix("oa_playlist")." WHERE pl_id=".intval($pl_id)."");
 	
 	list($pl_day,$pl_title,$pl_name,$pl_start,$pl_stop,$pl_image,$pl_date,$pl_description,$pl_station) = $xoopsDB->fetchRow($result);
@@ -199,7 +199,7 @@ function onair_PlaylistShow() {
         global $xoopsDB, $myts, $pl_days,$xoopsModuleConfig,$pl_timetype;
         
         xoops_cp_header();
-		$myts =& MyTextSanitizer::getInstance();
+		$myts = MyTextSanitizer::getInstance();
         echo "<table border='0' width='100%' class='outer' align='center'>
         <tr><td class='even'><b>"._AM_ONAIR_DATE."</b></td><td class='even'><b>"
 		._AM_ONAIR_TITLE."</b></td><td class='even'><b>"._AM_ONAIR_START."</b></td><td class='even'><b>"
@@ -250,10 +250,10 @@ function onair_Playlist($oa_id) {
 	include XOOPS_ROOT_PATH."/class/xoopsformloader.php";
 	$oa_id = $_GET['oa_id'];
 	$playlistform = new XoopsThemeForm("Playlist", "form", "playlist.php?op=Playlistpost&amp;pl_id=$oa_id"); 
-	$myts =& MyTextSanitizer::getInstance();
+	$myts = MyTextSanitizer::getInstance();
 	
 	$result=$xoopsDB->query("SELECT oa_id, oa_day, oa_title, oa_name, oa_start, oa_stop, oa_image,oa_station FROM ".$xoopsDB->prefix("oa_program")." WHERE oa_id=".intval($oa_id)."");
-	$myts =& MyTextSanitizer::getInstance();
+	$myts = MyTextSanitizer::getInstance();
 	list($oa_id,$oa_day,$oa_title,$oa_name,$oa_start,$oa_stop,$oa_image,$oa_station) = $xoopsDB->fetchRow($result);
      $id_playlist_hidden = new XoopsFormHidden("pl_id", $myts->htmlSpecialChars($myts ->stripSlashesGPC($oa_id)));
 	 $day_playlist_hidden = new XoopsFormHidden("pl_day", $oa_day);
@@ -347,7 +347,7 @@ function onair_Playlist($oa_id) {
 				break;		
 		case "Playlistpost":
 		global $myts,$xoopsDB;
-	$myts =& MyTextSanitizer::getInstance();
+	$myts = MyTextSanitizer::getInstance();
 		$pl_id	= $myts->htmlSpecialChars($_POST["pl_id"]);
 		$pl_day	= $myts->htmlSpecialChars($_POST["pl_day"]);
         $pl_date = $myts->htmlSpecialChars($_POST["pl_date"]);

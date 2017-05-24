@@ -92,7 +92,7 @@ function onair_ShowByDay($oa_day){
 	$dayname = onair_Numbers2Days($oa_day);
 	$msg = array();
 	if (isset($_POST['oa_id'])) {$oa_day=date('w');}
-	$myts =& MyTextSanitizer::getInstance();
+	$myts = MyTextSanitizer::getInstance();
 	$query = 'SELECT * FROM '.$xoopsDB->prefix('oa_program').' WHERE oa_day='.$myts->addSlashes("$oa_day").' ORDER BY oa_day,oa_start ASC';
 	$result = $xoopsDB->query($query);
 	$i = $xoopsDB->getRowsNum($result);
@@ -145,7 +145,7 @@ function onair_ShowByName($oa_name){
 	global $xoopsDB,$xoopsTpl,$oa_name,$xoopsModuleConfig,$myts;
 	
 	$msg = array();
-	$myts =& MyTextSanitizer::getInstance();
+	$myts = MyTextSanitizer::getInstance();
 	$oa_name = $_REQUEST['oa_name'];
 	$query = 'SELECT * FROM '.$xoopsDB->prefix('oa_program').' WHERE oa_name LIKE "%'.$myts->addSlashes($oa_name).'%" ORDER BY oa_day,oa_start ASC';
 	$result = $xoopsDB->query($query);
@@ -198,7 +198,7 @@ function onair_ShowExtInfo($oa_id){
 	$oa_id = $_GET['oa_id'];
 	$query = 'SELECT * FROM '.$xoopsDB->prefix('oa_program').' WHERE oa_id='.intval($oa_id).'';
 	$result = $xoopsDB->queryF($query);
-	$myts =& MyTextSanitizer::getInstance();
+	$myts = MyTextSanitizer::getInstance();
 
 	while ($sqlfetch=$xoopsDB->fetchArray($result)) {
 	$msg['oa_id'] = $myts->htmlSpecialChars($sqlfetch["oa_id"]);
@@ -276,7 +276,7 @@ function onair_PlayListById($pl_id){
 	$query = 'SELECT * FROM '.$xoopsDB->prefix('oa_playlist').' WHERE pl_id ='.intval($pl_id).'';
 	$result = $xoopsDB->query($query);
 	$i = $xoopsDB->getRowsNum($result);
-	$myts =& MyTextSanitizer::getInstance();
+	$myts = MyTextSanitizer::getInstance();
 
 	while ($sqlfetch=$xoopsDB->fetchArray($result)) {
 	$msg['pl_id'] = $myts->htmlSpecialChars($sqlfetch["pl_id"]);
@@ -316,7 +316,7 @@ function onair_PlaylistByName($pl_name){
 	// Function to show names similar to the one choosen
 	// Sorting by day, start time and name..
 	global $xoopsDB,$xoopsTpl,$oa_name,$xoopsModuleConfig;
-	$myts =& MyTextSanitizer::getInstance();
+	$myts = MyTextSanitizer::getInstance();
 	$msg = array();
 	$pl_name = $_REQUEST['pl_name'];
 	$query = 'SELECT * FROM '.$xoopsDB->prefix('oa_playlist').' WHERE pl_name LIKE "%'.$myts->addSlashes($pl_name).'%" ORDER BY pl_date, pl_day, pl_start ASC';
@@ -373,7 +373,7 @@ function onair_PlaylistByTitle($pl_title){
 	$query = 'SELECT * FROM '.$xoopsDB->prefix('oa_playlist').' WHERE pl_title LIKE "%'.$myts->addSlashes($pl_title).'%" ORDER BY pl_date, pl_day, pl_start ASC';
 	$result = $xoopsDB->query($query);
 	$i = $xoopsDB->getRowsNum($result);
-	$myts =& MyTextSanitizer::getInstance();
+	$myts = MyTextSanitizer::getInstance();
 
 	while ($sqlfetch=$xoopsDB->fetchArray($result)) {
 	$msg['pl_id'] = $myts->htmlSpecialChars($sqlfetch["pl_id"]);
@@ -418,7 +418,7 @@ function onair_PlaylistAll(){
 	// Sorting by day, start time and name..
 	global $xoopsDB,$xoopsTpl,$xoopsModuleConfig;
 	$msg = array();
-	$myts =& MyTextSanitizer::getInstance();
+	$myts = MyTextSanitizer::getInstance();
 	$query = 'SELECT * FROM '.$xoopsDB->prefix('oa_playlist').' ORDER BY pl_date, pl_day, pl_start ASC';
 	$result = $xoopsDB->query($query);
 	$i = $xoopsDB->getRowsNum($result);
@@ -574,7 +574,7 @@ function onair_clean_illegalSongData() {
 		//include XOOPS_ROOT_PATH.'/header.php';
 		global $xoopsDB,$myts;
 			$msg = array();
-			$myts =& MyTextSanitizer::getInstance();
+			$myts = MyTextSanitizer::getInstance();
 			$lastweek = $oa_songweek-1;
 			if ($lastweek <= 0) {
 			$lastweek = 52;
@@ -601,7 +601,7 @@ function onair_clean_illegalSongData() {
 	
 	function onair_GetThisWeekPos ($weeknr, $songdata, $year) { 
 	global $xoopsDB, $myts, $lastweek;
-	$myts =& MyTextSanitizer::getInstance();
+	$myts = MyTextSanitizer::getInstance();
 	$sql = "SELECT oa_songsong, count(*) FROM ".$xoopsDB->prefix("oa_hitlist")." where oa_songweek = ".intval($weeknr)." and oa_songyear = ".intval($year)." GROUP by oa_songsong ORDER by count(*) DESC LIMIT 20";
 	$result = $xoopsDB->queryF($sql);
 	$x=1;
@@ -626,7 +626,7 @@ function onair_DateOfWeek($year, $week)
 function onair_WeeksTotal($song,$week,$year)
 {
 	global $xoopsDB, $myts;
-	$myts =& MyTextSanitizer::getInstance();
+	$myts = MyTextSanitizer::getInstance();
 	$sql="SELECT COUNT(DISTINCT oa_songweek ) as sum FROM ".$xoopsDB->prefix('oa_hitlist')." WHERE oa_songsong = '".$myts->addSlashes($song)."' AND oa_songweek <= ".intval($week)." AND oa_songyear = ".$myts->addSlashes($year)."";
     $result = $xoopsDB->queryF($sql);
 	while($row = $xoopsDB->fetchArray($result)) {
@@ -638,7 +638,7 @@ function onair_WeeksTotal($song,$week,$year)
 function onair_TopPlace($song,$year)
 {
 global $xoopsDB;
-$myts =& MyTextSanitizer::getInstance();
+$myts = MyTextSanitizer::getInstance();
 $newarray = array();
 for ($x=1;$x<=52;$x++) {
 $sql="SELECT oa_songsong, count(*) FROM ".$xoopsDB->prefix("oa_hitlist")." WHERE oa_songweek = ".intval($x)." AND oa_songyear = ".intval($year)." GROUP by oa_songsong ORDER by count(*) DESC";
@@ -663,7 +663,7 @@ global $xoopsDB,$myts,$xoopsTpl;
 	$query = "SELECT oa_songsong, count(*) FROM ".$xoopsDB->prefix("oa_hitlist")." where oa_songweek = ".intval($week)." AND oa_songyear = ".intval($year)." GROUP by oa_songsong ORDER by count(*) DESC limit 20";
 	$result = $xoopsDB->query($query);
 	$i = $xoopsDB->getRowsNum($result);
-	$myts =& MyTextSanitizer::getInstance();
+	$myts = MyTextSanitizer::getInstance();
 	for ( $loop = 1; $loop <= $i; $loop ++) {
 	$counter = 1;
 	while ($sqlfetch=$xoopsDB->fetchArray($result)) {
