@@ -21,7 +21,7 @@
 		$xoopsOption['template_main'] = 'onair_playlists.html';
 		include XOOPS_ROOT_PATH.'/header.php';
 		global $xoopsDB,$show,$myts;
-		$myts =& MyTextSanitizer::getInstance();
+		$myts = MyTextSanitizer::getInstance();
 		$show='';
 if (isset($_GET['show']) && $_GET['show'] == 'title') {
         $show = 'title';

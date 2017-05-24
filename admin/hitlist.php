@@ -28,7 +28,7 @@ include '../include/classes.php';
 onair_clean_illegalSongData();
 
 	global $xoopsModule, $xoopsDB, $myts, $plistop, $xoopsModuleConfig;    		
-	$myts =& MyTextSanitizer::getInstance();
+	$myts = MyTextSanitizer::getInstance();
 	
 	$plistop = 'plistform'; 
 	$oa_listdir = "modules/onair/";
@@ -117,7 +117,7 @@ break;
 	fclose($fp);
 	//$output = str_replace("\t", "", $data);
 	$output = explode("\n", $data);
-	$myts =& MyTextSanitizer::getInstance();
+	$myts = MyTextSanitizer::getInstance();
 	foreach($output as $var) {
 		$tmp = explode("\t", $var);
 		$oa_date = $myts->htmlSpecialChars($tmp[0]);
@@ -163,7 +163,7 @@ $sql="INSERT INTO ".$xoopsDB->prefix("oa_hitlist")." (oa_songid, oa_songsong, oa
 		$dayname = date( "w", strtotime( $breaker[5] ) );
 		$year = date( "Y", strtotime( $breaker[5] ) );
 	}
-	$myts =& MyTextSanitizer::getInstance();
+	$myts = MyTextSanitizer::getInstance();
 	foreach($output as $var) {
 		$tmp0 = str_replace ( "\r", "", $var);
 		$tmp = explode ("\n", $tmp0);
@@ -196,7 +196,7 @@ $sql="INSERT INTO ".$xoopsDB->prefix("oa_hitlist")." (oa_songid, oa_songsong, oa
 	fclose($fp);
 	$output = preg_split('/[\r\n]+/', $data, -1, PREG_SPLIT_NO_EMPTY);
 	$output1 = str_replace("''", "'",$output);
-	$myts =& MyTextSanitizer::getInstance();
+	$myts = MyTextSanitizer::getInstance();
 	foreach($output1 as $var) {
 		$tmp = explode(";", $var);
 		$oa_song = htmlspecialchars($tmp[0],ENT_QUOTES);
